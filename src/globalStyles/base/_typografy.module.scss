@@ -1,0 +1,26 @@
+@use './colors.module' as color;
+
+h1 {
+    font-size: clamp(2.2rem, 3vw, 3rem);
+}
+
+h2 {
+    font-size: clamp(3rem, 4vw, 4rem);
+
+    &.title-section {
+        color: color.$brand-color;
+    }
+}
+
+h3 {
+    font-size: clamp(1.8rem, 3vw, 2rem);
+}
+
+h4 {
+    font-size: clamp(1.6rem, 2.5vw, 1.8rem);
+}
+
+
+p {
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+}
