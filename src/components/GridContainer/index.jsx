@@ -7,7 +7,7 @@ const GridContainer = ({ children }) => {
 };
 
 GridContainer.propTypes = {
-  children: PropTypes.node.isRequire,
+  children: PropTypes.node.isRequired,
 };
 
 export default GridContainer;
