@@ -1,0 +1,16 @@
+.card {
+    max-width: 28.6rem;
+    height: 32.1rem;
+    background-color: global.$bg-card;
+    padding: 2rem;
+    border-radius: 1rem;
+    @include global.flex($justify: center, $align: center, $direction: column, $gap: 3rem);
+
+    img {
+        width: 10rem;
+    }
+
+    p {
+        text-align: center;
+    }
+}

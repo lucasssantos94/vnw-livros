@@ -1,3 +1,28 @@
-.title {
-    color: global.$brand-color;
+.s-hero {
+    height: 70vh;
+    background: url("@assets/images/bg-home.png") no-repeat center;
+    background-size: cover;
+
+    &>div {
+        @include global.flex($align: center);
+
+        h2 {
+            color: global.$light-color;
+            font-size: 3.2rem;
+            width: 20vw;
+        }
+    }
+}
+
+.s-cards {
+    padding: 4% 0 8% 0;
+
+    &>div {
+        .box-cards {
+            margin-top: 5.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(28.6rem, 1fr));
+            gap: 4rem;
+        }
+    }
 }
