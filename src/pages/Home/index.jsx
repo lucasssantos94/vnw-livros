@@ -15,7 +15,7 @@ const HomePage = () => {
 
       <section className={styles["s-cards"]}>
         <Container>
-          <h2 className="title-section">Por que devo doar ?</h2>
+          <h2 className={styles["title-section"]}>Por que devo doar ?</h2>
 
           <div className={styles["box-cards"]}>
             {cards.map((card) => (

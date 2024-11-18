@@ -15,7 +15,7 @@ export default defineConfig({
         api: "modern-compiler",
         additionalData: `@use "${path.join(
           process.cwd(),
-          "src/globalStyles/global.module.scss",
+          "src/globalStyles/global.scss",
         )}" as global;`,
       },
     },
