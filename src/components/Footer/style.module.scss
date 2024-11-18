@@ -1,0 +1,35 @@
+.footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: global.$light-color;
+
+
+    .contact-footer {
+        background-color: #005695;
+        padding: 3rem 0;
+
+        p {
+            font-size: 1.6rem;
+        }
+
+        &>div {
+            @include global.flex($justify: space-between, $align: center);
+
+            .social-links {
+                @include global.flex($align: center, $gap: 2rem);
+            }
+        }
+    }
+
+    .copy-footer {
+        background-color: global.$dark-color;
+        padding: 1rem 0;
+        text-align: center;
+
+        p {
+            font-size: 1.5rem;
+        }
+    }
+}
