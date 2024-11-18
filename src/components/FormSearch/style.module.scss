@@ -1,0 +1,30 @@
+.form-search {
+    position: relative;
+
+    input {
+        background-color: transparent;
+        border: 2px solid global.$light-color;
+        border-radius: 2rem;
+        width: 30rem;
+        padding: 1rem;
+        outline: none;
+        color: global.$light-color;
+        font-family: inter, sans-serif;
+        overflow-x: hidden;
+
+        &::placeholder {
+            color: global.$light-color;
+        }
+    }
+
+    .btn-search {
+        background-color: transparent;
+        border: 0;
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 1000;
+    }
+}
