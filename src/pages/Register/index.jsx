@@ -1,12 +1,15 @@
 import Container from "../../components/Container";
 import FormAddBook from "../../components/FormAddBook";
+import styles from "./style.module.scss";
 
 const RegisterPage = () => {
   return (
-    <Container>
-      <h1>Pagina de Cadastro</h1>;
-      <FormAddBook />
-    </Container>
+    <section className={styles["s-register"]}>
+      <Container>
+        <h3>Por favor, preencha o formulário com as informações do Livro</h3>
+        <FormAddBook />
+      </Container>
+    </section>
   );
 };
 

@@ -1,0 +1,6 @@
+.s-register {
+    &>div {
+        padding-top: 2rem;
+        @include global.flex($direction: column, $align: center, $gap: 4rem);
+    }
+}
