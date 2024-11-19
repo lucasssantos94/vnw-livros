@@ -1,6 +1,7 @@
 .form-add-book {
     @include global.flex($align: center, $direction: column, $justify: space-between);
-    width: 44.2rem;
+    width: 100%;
+    max-width: 44.2rem;
     height: 50rem;
     border: 3px solid global.$brand-color;
     border-radius: 2rem;
