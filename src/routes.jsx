@@ -5,6 +5,7 @@ import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import BooksPage from "./pages/Books";
 import RegisterPage from "./pages/Register";
+import NotFoundPage from "./pages/NotFound";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,8 @@ const AppRoutes = () => {
           <Route path="/livros" element={<BooksPage />} />
           <Route path="/cadastro" element={<RegisterPage />} />
           <Route path="/pesquisa/:title" element={<SearchPage />} />
+          <Route path="/pesquisa/:title" element={<SearchPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

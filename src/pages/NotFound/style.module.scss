@@ -1,0 +1,15 @@
+.s-404 {
+    padding: 3rem;
+
+    &>div {
+
+        @include global.flex($direction: column, $align: center, $gap: 4rem);
+
+
+        img {
+            mix-blend-mode: multiply;
+            width: 60rem;
+        }
+
+    }
+}
