@@ -1,10 +1,9 @@
 .form-add-book {
     @include global.flex($align: center, $direction: column, $justify: space-between);
-    max-width: 42rem;
+    width: 44.2rem;
     height: 50rem;
     border: 3px solid global.$brand-color;
     border-radius: 2rem;
-    max-width: 44.2rem;
     padding: 2rem;
 
     .form-header {
@@ -16,20 +15,28 @@
         }
     }
 
-    div {
-        text-align: center;
+    .box-input {
+        width: 90%;
+        position: relative;
 
         input:not(input[type="submit"]) {
-            width: 90%;
+            width: 100%;
             border-radius: 15px;
             border: 2px solid global.$brand-color;
             padding: 0.875rem 1.4rem;
-            outline: none;
-            margin-bottom: 3rem;
 
             &::placeholder {
                 color: global.$dark-color;
             }
+        }
+
+        .error-message {
+            position: absolute;
+            left: 1.8rem;
+            top: 70%;
+            color: red;
+            font-size: 1.4rem;
+            margin-top: 1rem;
         }
     }
 
@@ -43,4 +50,6 @@
         font-size: 2rem;
         cursor: pointer;
     }
+
+
 }
