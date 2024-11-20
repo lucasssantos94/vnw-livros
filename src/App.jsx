@@ -1,18 +1,18 @@
 import { Outlet } from "react-router-dom";
-import GridContainer from "@components/GridContainer";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
+import RootLayout from "@components/RootLayout";
 
 const App = () => {
   return (
     <>
-      <GridContainer>
+      <RootLayout>
         <Header />
         <main>
           <Outlet />
         </main>
         <Footer />
-      </GridContainer>
+      </RootLayout>
     </>
   );
 };

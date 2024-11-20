@@ -33,7 +33,6 @@ const FormAddBook = () => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     addBook(data.title, data.category, data.author, data.urlImage);
     // Chama a função reset no CustomDatalist
     if (datalistRef.current) {

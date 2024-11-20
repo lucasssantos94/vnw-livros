@@ -15,14 +15,14 @@
 }
 
 .s-cards {
-    padding: 4% 0 8% 0;
+    padding: 4% 0 4% 0;
 
     &>div {
         .box-cards {
             margin-top: 5.5rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(28.6rem, 1fr));
-            gap: 4rem;
+            gap: 2rem;
         }
     }
 }
