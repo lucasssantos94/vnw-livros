@@ -1,0 +1,10 @@
+.s-search {
+    padding: 2rem 0;
+
+    .box-books {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+}

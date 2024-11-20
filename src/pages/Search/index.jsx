@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { books } from "../../constants/books";
 import Book from "../../components/Book";
 import Container from "../../components/Container";
+import BookNotFound from "@assets/images/404/book-not-found.png";
+import styles from "./styles.module.scss";
 
 const SearchPage = () => {
   const { title } = useParams();
-  console.log(title);
 
   const searchedBooks = books.filter((book) =>
     book.title
@@ -22,15 +23,23 @@ const SearchPage = () => {
 
   return (
     <>
-      <Container>
-        <h2 className="title-section">{`${searchedBooks.length} ${
-          searchedBooks.length > 1 ? "resultados" : "resultado"
-        } para ${title}`}</h2>
-        <div>
-          {searchedBooks &&
-            searchedBooks.map((book) => <Book key={book.title} book={book} />)}
-        </div>
-      </Container>
+      <section className={styles["s-search"]}>
+        <Container>
+          <h2 className={styles["title-section"]}>
+            {`${searchedBooks.length} resultados para ${title}`}
+          </h2>
+
+          {searchedBooks.length > 0 ? (
+            <div className={styles["box-books"]}>
+              {searchedBooks.map((book) => (
+                <Book key={book.title} book={book} />
+              ))}
+            </div>
+          ) : (
+            <img src={BookNotFound} alt="Livro não encontrado" />
+          )}
+        </Container>
+      </section>
     </>
   );
 };
