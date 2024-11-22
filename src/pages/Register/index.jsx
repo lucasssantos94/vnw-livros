@@ -9,7 +9,7 @@ const RegisterPage = () => {
   return (
     <section className={styles["s-register"]}>
       <Container>
-        <ToastContainer />
+        <ToastContainer className={styles["toastify"]} />
         <h2 className={styles["title-section"]}>
           Por favor, preencha o formulário com as informações do Livro
         </h2>

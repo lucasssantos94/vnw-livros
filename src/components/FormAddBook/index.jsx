@@ -20,9 +20,9 @@ const FormAddBook = () => {
   const datalistRef = useRef(null);
 
   const notify = () => {
-    toast.success("Livro cadastrado com sucesso!", {
+    toast.success("Livro cadastrado! Obrigado pela doação", {
       position: "top-right",
-      autoClose: 2000,
+      autoClose: 2500,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -34,7 +34,7 @@ const FormAddBook = () => {
 
   const onSubmit = (data) => {
     addBook(data.title, data.category, data.author, data.urlImage);
-    // Chama a função reset no CustomDatalist
+
     if (datalistRef.current) {
       datalistRef.current.reset();
     }
@@ -67,7 +67,7 @@ const FormAddBook = () => {
 
       <div className={styles["box-input"]}>
         <CustomDatalist
-          ref={datalistRef} // Conecta o ref ao CustomDatalist
+          ref={datalistRef}
           options={categoriesBooks}
           placeholder="Categoria"
           name="category"
