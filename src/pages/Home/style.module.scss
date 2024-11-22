@@ -12,10 +12,23 @@
             width: 20vw;
         }
     }
+
+    @include global.media-query(md) {
+        height: 50vh;
+
+        &>div {
+            h2 {
+                color: global.$light-color;
+                font-size: 2.8rem;
+                text-align: center;
+                width: 100%;
+            }
+        }
+    }
 }
 
 .s-cards {
-    padding: 4% 0 4% 0;
+    padding: 4% 0;
 
     &>div {
         .box-cards {
@@ -23,6 +36,17 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(28.6rem, 1fr));
             gap: 2rem;
+        }
+    }
+
+    @include global.media-query(md) {
+        text-align: center;
+
+        &>div {
+            .box-cards {
+                margin-top: 3rem;
+                justify-items: center;
+            }
         }
     }
 }
