@@ -1,10 +1,15 @@
 .s-register {
     &>div {
-        padding-top: 2rem;
         @include global.flex($direction: column, $align: center, $gap: 4rem);
 
         h2 {
             font-size: 2rem;
+        }
+
+        @include global.media-query(md) {
+            h2 {
+                text-align: center;
+            }
         }
     }
 
