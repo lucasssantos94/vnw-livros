@@ -26,7 +26,20 @@
         text-align: center;
 
         p {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+        }
+    }
+
+    @include global.media-query(md) {
+        .contact-footer {
+            &>div {
+                @include global.flex($direction: column, $align: center, $gap: 2rem);
+            }
+        }
+
+        .copy-footer {
+            padding: 1.6rem 0;
+
         }
     }
 }
