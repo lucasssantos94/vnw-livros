@@ -1,16 +1,19 @@
 .form-search {
     position: relative;
+    background-color: transparent;
+    border: 2px solid global.$light-color;
+    border-radius: 2rem;
+    width: 18vw;
+    @include global.flex($align: center, $justify: space-between);
+    padding: 1rem;
 
     input {
-        background-color: transparent;
-        border: 2px solid global.$light-color;
-        border-radius: 2rem;
-        width: 30rem;
-        padding: 1rem;
         outline: none;
+        background-color: transparent;
+        border: none;
+        width: 90%;
         color: global.$light-color;
         font-family: inter, sans-serif;
-        overflow-x: hidden;
 
         &::placeholder {
             color: global.$light-color;
@@ -20,11 +23,7 @@
     .btn-search {
         background-color: transparent;
         border: 0;
-        position: absolute;
-        top: 50%;
-        right: 2rem;
-        transform: translateY(-50%);
-        cursor: pointer;
         z-index: 1000;
+        cursor: pointer;
     }
 }
