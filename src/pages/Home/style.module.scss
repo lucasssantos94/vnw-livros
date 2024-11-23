@@ -13,7 +13,7 @@
         }
     }
 
-    @include global.media-query(md) {
+    @include global.media-query(lg) {
         height: 50vh;
 
         &>div {
@@ -39,7 +39,7 @@
         }
     }
 
-    @include global.media-query(md) {
+    @include global.media-query(lg) {
         text-align: center;
 
         &>div {

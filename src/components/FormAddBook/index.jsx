@@ -16,7 +16,6 @@ const FormAddBook = () => {
     reset,
   } = useForm();
 
-  // Cria um ref para o CustomDatalist
   const datalistRef = useRef(null);
 
   const notify = () => {
