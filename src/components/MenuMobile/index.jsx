@@ -9,7 +9,6 @@ const MenuMobile = () => {
 
   useEffect(() => {
     const closeMenu = (e) => {
-      // Verifica se o clique foi fora do menu e fora do FormSearch
       if (
         menuRef.current &&
         !menuRef.current.contains(e.target) &&

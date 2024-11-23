@@ -1,14 +1,12 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/display-name */
+import PropTypes from "prop-types";
 import {
   useState,
   useRef,
   useEffect,
   forwardRef,
   useImperativeHandle,
+  useCallback,
 } from "react";
-
 import styles from "./style.module.scss";
 
 const CustomDatalist = forwardRef(
@@ -36,12 +34,15 @@ const CustomDatalist = forwardRef(
       setShowDropdown(false);
     };
 
-    const handleClickOutside = (e) => {
-      if (containerRef.current && !containerRef.current.contains(e.target)) {
-        setShowDropdown(false);
-        if (onBlur) onBlur(e);
-      }
-    };
+    const handleClickOutside = useCallback(
+      (e) => {
+        if (containerRef.current && !containerRef.current.contains(e.target)) {
+          setShowDropdown(false);
+          if (onBlur) onBlur(e);
+        }
+      },
+      [onBlur],
+    );
 
     useEffect(() => {
       document.addEventListener("mousedown", handleClickOutside);
@@ -50,7 +51,6 @@ const CustomDatalist = forwardRef(
       };
     }, [handleClickOutside]);
 
-    // Expose a `reset` function to the parent using ref
     useImperativeHandle(ref, () => ({
       reset: () => setInputValue(""),
     }));
@@ -88,5 +88,17 @@ const CustomDatalist = forwardRef(
     );
   },
 );
+
+CustomDatalist.displayName = "CustomDatalist";
+
+CustomDatalist.propTypes = {
+  options: PropTypes.array.isRequired,
+  placeholder: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  error: PropTypes.object,
+};
 
 export default CustomDatalist;
