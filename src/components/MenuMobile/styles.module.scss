@@ -1,0 +1,68 @@
+body:has(.hamburguer.active) {
+    overflow-y: hidden;
+}
+
+.hamburguer {
+    display: block;
+    width: 3rem;
+    border-top: 2px solid;
+    color: global.$light-color;
+    cursor: pointer;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        width: 3rem;
+        height: .2rem;
+        margin-top: .5rem;
+        background-color: currentColor;
+        transition: .6s;
+        position: relative;
+    }
+
+    &.active {
+        border-top-color: transparent;
+
+        &::before {
+            transform: rotate(135deg);
+        }
+
+        &::after {
+            transform: rotate(-135deg);
+            top: -.7rem;
+        }
+    }
+
+
+}
+
+.menu-mobile {
+    position: fixed;
+    top: global.$header-height;
+    right: -100%;
+    width: 45%;
+    height: 100vh;
+    background: global.$gradient;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 2rem;
+    @include global.flex($direction: column, $gap: 4rem);
+
+    &>nav {
+        @include global.flex($direction: column, $gap: 4rem);
+    }
+
+    &.open {
+        right: 0;
+    }
+
+    @include global.media-query(md) {
+        width: 70%;
+
+        &>nav {
+            gap: 2rem;
+        }
+
+    }
+}

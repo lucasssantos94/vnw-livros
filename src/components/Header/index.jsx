@@ -1,11 +1,30 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Container from "../Container";
 import FormSearch from "../FormSearch";
 
 import Logo from "@assets/images/logo.png";
-import styles from "./style.module.scss";
+import NavLinks from "../NavLinks";
+import MenuMobile from "../MenuMobile";
+
+import styles from "./styles.module.scss";
 
 const Header = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 992);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 992);
+    };
+
+    window.addEventListener("resize", handleResize);
+    console.log(isMobile);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isMobile]);
+
   return (
     <header className={styles.header}>
       <Container>
@@ -14,28 +33,15 @@ const Header = () => {
           <h1>Livros Vai na Web</h1>
         </NavLink>
 
-        <nav className={styles.menu}>
-          <NavLink
-            to="/"
-            className={({ isActive }) => (isActive ? `${styles.active}` : "")}
-          >
-            Inicio
-          </NavLink>
-          <NavLink
-            to="/livros"
-            className={({ isActive }) => (isActive ? `${styles.active}` : "")}
-          >
-            Livros Doados
-          </NavLink>
-          <NavLink
-            to="/cadastro"
-            className={({ isActive }) => (isActive ? `${styles.active}` : "")}
-          >
-            Quero Doar
-          </NavLink>
-        </nav>
+        {isMobile ? (
+          <MenuMobile />
+        ) : (
+          <>
+            <NavLinks />
 
-        <FormSearch />
+            <FormSearch />
+          </>
+        )}
       </Container>
     </header>
   );

@@ -1,10 +1,11 @@
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Search from "@assets/images/icons/search.png";
 
 import styles from "./style.module.scss";
 
-const FormSearch = () => {
+const FormSearch = ({ closeMenu }) => {
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const FormSearch = () => {
     e.preventDefault();
     navigate(`/pesquisa/${e.target[0].value.trim()}`);
     setSearch("");
+    closeMenu();
   };
   return (
     <form className={styles["form-search"]} onSubmit={handleSubmit}>
@@ -29,6 +31,10 @@ const FormSearch = () => {
       </button>
     </form>
   );
+};
+
+FormSearch.propTypes = {
+  closeMenu: PropTypes.func,
 };
 
 export default FormSearch;

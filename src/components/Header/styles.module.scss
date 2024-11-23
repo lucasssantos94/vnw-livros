@@ -1,0 +1,22 @@
+.header {
+    background: global.$gradient;
+    // padding: 4rem 0;
+    height: global.$header-height;
+    position: relative;
+
+    &>div {
+        @include global.flex($justify: space-between, $align: center);
+
+        .logo {
+            @include global.flex($align: center, $gap: 2rem);
+            color: global.$light-color;
+
+            img {
+                width: 5.5rem;
+            }
+        }
+
+
+    }
+
+}
