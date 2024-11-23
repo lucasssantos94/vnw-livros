@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import HomePage from "./pages/Home";
@@ -7,20 +7,28 @@ import BooksPage from "./pages/Books";
 import RegisterPage from "./pages/Register";
 import NotFoundPage from "./pages/NotFound";
 
-const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="/livros" element={<BooksPage />} />
-          <Route path="/livros/:title" element={<SearchPage />} />
-          <Route path="/cadastro" element={<RegisterPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
-
-export default AppRoutes;
+export const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        { path: "/", element: <HomePage /> },
+        { path: "/livros", element: <BooksPage /> },
+        { path: "/livros/:title", element: <SearchPage /> },
+        { path: "/doar", element: <RegisterPage /> },
+        { path: "*", element: <NotFoundPage /> },
+      ],
+    },
+  ],
+  {
+    future: {
+      v7_fetcherPersist: true,
+      v7_normalizeFormMethod: true,
+      v7_skipActionErrorRevalidation: true,
+      v7_relativeSplatPath: true,
+      v7_partialHydration: true,
+      v7_startTransition: true,
+    },
+  },
+);

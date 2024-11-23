@@ -18,7 +18,6 @@ const Header = () => {
     };
 
     window.addEventListener("resize", handleResize);
-    console.log(isMobile);
 
     return () => {
       window.removeEventListener("resize", handleResize);

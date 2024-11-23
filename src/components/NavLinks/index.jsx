@@ -21,7 +21,7 @@ const NavLinks = ({ closeMenu }) => {
         Livros Doados
       </NavLink>
       <NavLink
-        to="/cadastro"
+        to="/doar"
         className={({ isActive }) => (isActive ? `${styles.active}` : "")}
         onClick={closeMenu}
       >
