@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Container from "../Container";
 import FormSearch from "../FormSearch";
 
-import Logo from "@assets/images/logo.png";
+import Logo from "@assets/images/icons/logo.png";
 import NavLinks from "../NavLinks";
 import MenuMobile from "../MenuMobile";
 

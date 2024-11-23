@@ -12,7 +12,7 @@ const FormSearch = ({ closeMenu }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/pesquisa/${e.target[0].value.trim()}`);
+    navigate(`/livros/${e.target[0].value.trim()}`);
     setSearch("");
     closeMenu();
   };

@@ -46,7 +46,7 @@ body:has(.hamburguer.active) {
     background: global.$gradient;
     transition: right 0.3s ease;
     z-index: 1000;
-    padding: 2rem;
+    padding: 2rem 1rem;
     @include global.flex($direction: column, $gap: 4rem);
 
     &>form {
