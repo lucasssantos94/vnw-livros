@@ -41,13 +41,21 @@ body:has(.hamburguer.active) {
     position: fixed;
     top: global.$header-height;
     right: -100%;
-    width: 45%;
+    width: 60%;
     height: 100vh;
     background: global.$gradient;
     transition: right 0.3s ease;
     z-index: 1000;
     padding: 2rem;
     @include global.flex($direction: column, $gap: 4rem);
+
+    &>form {
+        width: 100%;
+
+        input {
+            width: 85%;
+        }
+    }
 
     &>nav {
         @include global.flex($direction: column, $gap: 4rem);
