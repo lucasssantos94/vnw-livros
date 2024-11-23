@@ -14,7 +14,9 @@ const FormSearch = ({ closeMenu }) => {
     e.preventDefault();
     navigate(`/livros/${e.target[0].value.trim()}`);
     setSearch("");
-    closeMenu();
+    {
+      closeMenu && closeMenu();
+    }
   };
   return (
     <form className={styles["form-search"]} onSubmit={handleSubmit}>
