@@ -7,14 +7,46 @@
         @include global.flex($justify: space-between, $align: center);
 
         .logo {
-            @include global.flex($align: center, $gap: 2rem);
+            @include global.flex($align: center, $gap: 1rem);
             color: global.$light-color;
 
             img {
                 width: 5.5rem;
             }
+
+            @include global.media-query(320px) {
+                img {
+                    width: 4rem;
+                }
+
+                h1 {
+                    font-size: 1.8rem;
+                }
+            }
         }
 
+    }
+
+    @include global.media-min-max($min: 992px, $max: 1300px) {
+        height: 20vh;
+
+        &>div {
+            .logo {
+                @include global.flex($direction: column, $align: center, $gap: 1rem);
+
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            nav {
+                gap: 2rem;
+            }
+
+            form {
+                width: 25vw;
+            }
+        }
     }
 
 }

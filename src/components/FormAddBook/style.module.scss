@@ -10,6 +10,10 @@
     .form-header {
         @include global.flex($align: center, $gap: 2rem);
 
+        @include global.media-query(320px) {
+            @include global.flex($direction: column, $align: center, $gap: 1rem);
+        }
+
         h3 {
             color: global.$brand-color;
             font-weight: normal;

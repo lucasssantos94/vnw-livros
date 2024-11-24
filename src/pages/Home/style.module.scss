@@ -13,6 +13,17 @@
         }
     }
 
+    @include global.media-min-max($min: 993px, $max: 1299px) {
+        height: 60vh;
+
+        &>div {
+            h2 {
+                font-size: 3rem;
+                width: 26vw;
+            }
+        }
+    }
+
     @include global.media-query(lg) {
         height: 50vh;
 
@@ -36,6 +47,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(28.6rem, 1fr));
             gap: 2rem;
+
+            @include global.media-min-max($min: 993px, $max: 1299px) {
+                grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+            }
         }
     }
 
