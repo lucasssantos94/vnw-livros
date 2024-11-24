@@ -22,7 +22,17 @@ const Footer = () => {
       <section className={styles["copy-footer"]}>
         <Container>
           <p>
-            Layout desenvolvido pela Vai Na Web para fins educativos - 2024{" "}
+            Layout desenvolvido pela{" "}
+            {
+              <a
+                href="https://www.vainaweb.com.br"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Vai na web
+              </a>
+            }{" "}
+            para fins educativos - 2024{" "}
           </p>
         </Container>
       </section>
