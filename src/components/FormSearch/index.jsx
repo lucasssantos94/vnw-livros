@@ -1,37 +1,56 @@
 import PropTypes from "prop-types";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 import Search from "@assets/images/icons/search.png";
 
 import styles from "./style.module.scss";
 
 const FormSearch = ({ closeMenu }) => {
-  const [search, setSearch] = useState("");
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+    reset,
+    clearErrors,
+  } = useForm();
 
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/livros/${e.target[0].value.trim()}`);
-    setSearch("");
+  const onSubmit = (data) => {
+    navigate(`/livros/${data.title.trim()}`);
+    reset();
     {
       closeMenu && closeMenu();
     }
   };
-  return (
-    <form className={styles["form-search"]} onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="O que você procura ?"
-        required
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
 
-      <button className={styles["btn-search"]}>
-        <img src={Search} alt="lupa para realizar pesquisa" />
-      </button>
-    </form>
+  return (
+    <div>
+      <form className={styles["form-search"]} onSubmit={handleSubmit(onSubmit)}>
+        <input
+          className={styles["input-search"]}
+          type="search"
+          placeholder="O que você procura ?"
+          {...register("title", {
+            required: {
+              value: true,
+              message: "O campo de pesquisa deve ser preenchido",
+            },
+
+            onBlur: () => clearErrors("title"),
+          })}
+        />
+
+        <button className={styles["btn-search"]}>
+          <img src={Search} alt="lupa para realizar pesquisa" />
+        </button>
+        {errors.title && (
+          <span className={styles["error-message"]}>
+            {errors.title.message}
+          </span>
+        )}
+      </form>
+    </div>
   );
 };
 

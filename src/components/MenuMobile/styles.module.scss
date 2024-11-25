@@ -49,7 +49,7 @@ body:has(.hamburguer.active) {
     padding: 2rem 1rem;
     @include global.flex($direction: column, $gap: 4rem);
 
-    &>form {
+    form {
         width: 100%;
 
         input {

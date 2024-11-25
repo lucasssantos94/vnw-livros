@@ -26,4 +26,12 @@
         z-index: 1000;
         cursor: pointer;
     }
+
+    .error-message {
+        font-size: 1.2rem;
+        color: red;
+        position: absolute;
+        top: 5rem;
+    }
+
 }
