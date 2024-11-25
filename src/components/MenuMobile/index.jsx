@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
+import NavLinks from "@components/NavLinks";
+import FormSearch from "@components/FormSearch";
+
 import styles from "./styles.module.scss";
-import NavLinks from "../NavLinks";
-import FormSearch from "../FormSearch";
 
 const MenuMobile = () => {
   const [isOpen, setIsOpen] = useState(false);

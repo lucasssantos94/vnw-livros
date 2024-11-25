@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-
 import { NavLink } from "react-router-dom";
+
 import styles from "./styles.module.scss";
 
 const NavLinks = ({ closeMenu }) => {

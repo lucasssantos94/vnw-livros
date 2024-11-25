@@ -1,5 +1,6 @@
-import Container from "../../components/Container";
-import FormAddBook from "../../components/FormAddBook";
+import Container from "@components/Container";
+import FormAddBook from "@components/FormAddBook";
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

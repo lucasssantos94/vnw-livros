@@ -1,5 +1,5 @@
-import Container from "../../components/Container";
-import Book from "../../components/Book";
+import Container from "@components/Container";
+import Book from "@components/Book";
 import { books } from "@constants/books";
 import style from "./style.module.scss";
 

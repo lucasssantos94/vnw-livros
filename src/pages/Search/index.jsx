@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
-import { books } from "../../constants/books";
-import Book from "../../components/Book";
-import Container from "../../components/Container";
+import Book from "@components/Book";
+import Container from "@components/Container";
+import { books } from "@constants/books";
 import BookNotFound from "@assets/images/404/book-not-found.png";
+
 import styles from "./styles.module.scss";
 
 const SearchPage = () => {
@@ -26,7 +27,7 @@ const SearchPage = () => {
       <section className={styles["s-search"]}>
         <Container>
           <h2 className={styles["title-section"]}>
-            {`${searchedBooks.length} resultados para ${title}`}
+            {`${searchedBooks.length} ${searchedBooks.length > 1 ? "resultados" : "resultado"} para ${title}`}
           </h2>
 
           {searchedBooks.length > 0 ? (

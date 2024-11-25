@@ -39,7 +39,7 @@ body:has(.hamburguer.active) {
 
 .menu-mobile {
     position: fixed;
-    top: global.$header-height;
+    top: 15vh;
     right: -100%;
     width: 60%;
     height: 100vh;

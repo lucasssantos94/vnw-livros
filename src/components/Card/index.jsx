@@ -4,11 +4,11 @@ import styles from "./style.module.scss";
 
 const Card = ({ card }) => {
   return (
-    <div className={styles.card}>
+    <article className={styles.card}>
       <img src={card.image} alt={card.alt} />
 
       <p>{card.text}</p>
-    </div>
+    </article>
   );
 };
 

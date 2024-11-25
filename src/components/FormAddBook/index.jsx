@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useRef } from "react";
-import CustomDatalist from "../Datalist";
+import { useRef, useEffect } from "react";
+import CustomDatalist from "@components/Datalist";
 import { addBook, categoriesBooks } from "@constants/books";
 import { toast } from "react-toastify";
 
@@ -14,8 +14,10 @@ const FormAddBook = () => {
     formState: { errors },
     setValue,
     reset,
+    clearErrors,
   } = useForm();
 
+  const formRef = useRef(null);
   const datalistRef = useRef(null);
 
   const notify = () => {
@@ -41,8 +43,25 @@ const FormAddBook = () => {
     reset();
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (formRef.current && !formRef.current.contains(event.target)) {
+        clearErrors(); // Limpa todos os erros
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [clearErrors]);
+
   return (
-    <form className={styles["form-add-book"]} onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className={styles["form-add-book"]}
+      onSubmit={handleSubmit(onSubmit)}
+      ref={formRef}
+    >
       <div className={styles["form-header"]}>
         <img src={iconForm} alt="" />
         <h3>Informações do Livro</h3>
@@ -73,7 +92,10 @@ const FormAddBook = () => {
           value={register("category").value}
           onChange={(e) => {
             setValue("category", e.target.value);
-            register("category");
+            register("category", {
+              required: true,
+              message: "Campo obrigatório",
+            });
           }}
           error={errors.category?.message}
         />

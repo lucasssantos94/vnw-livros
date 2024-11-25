@@ -1,6 +1,6 @@
-import Container from "../../components/Container";
-
+import Container from "@components/Container";
 import pageNotFound from "@assets/images/404/page-404.png";
+
 import styles from "./style.module.scss";
 
 const NotFoundPage = () => {
