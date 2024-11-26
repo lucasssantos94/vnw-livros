@@ -38,15 +38,15 @@ Para manter o código consistente e padronizado, foram utilizadas as seguintes f
 
 ### 🖥️ Desktop
 
-<img src="https://vnw-livros.vercel.app/screenshots/desktop.gif">
+<img src="https://github.com/lucasssantos94/vnw-livros/blob/main/public/screenshots/desktop.gif">
 
 ### 📲 Tablet
 
-<img src="https://vnw-livros.vercel.app/screenshots/tablet.gif">
+<img src="https://github.com/lucasssantos94/vnw-livros/blob/main/public/screenshots/tablet.gif">
 
 ### 📱 Mobile
 
-<img src="https://vnw-livros.vercel.app/screenshots/mobile.gif">
+<img src="https://github.com/lucasssantos94/vnw-livros/blob/main/public/screenshots/mobile.gif">
 
 ## 📦 Instalação e Execução
 
