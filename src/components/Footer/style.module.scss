@@ -16,12 +16,6 @@
 
             .social-links {
                 @include global.flex($align: center, $gap: 2rem);
-
-                img {
-                    width: 3.5rem;
-                    height: 3.5rem;
-                    object-fit: cover;
-                }
             }
         }
     }
