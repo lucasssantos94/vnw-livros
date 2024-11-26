@@ -13,7 +13,7 @@ const Footer = () => {
           <div className={styles["social-links"]}>
             {socialLinks.map((link) => (
               <a key={link.id} href={link.url} target="_blank" rel="noreferrer">
-                <img src={link.icon} alt={link.url} />
+                <img src={link.icon} alt={`logo ${link.name}`} />
               </a>
             ))}
           </div>

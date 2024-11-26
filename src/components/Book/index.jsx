@@ -6,7 +6,7 @@ const Book = ({ book }) => {
   return (
     <article className={styles["box-book"]}>
       <div className={styles["box-img-book"]}>
-        <img src={book.urlImage} alt={book.title} />
+        <img src={book.urlImage} alt={`Capa do livro ${book.title}`} />
       </div>
 
       <div className={styles["info-book"]}>
