@@ -19,7 +19,6 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.2",
     "react-router-dom": "^6.28.0",
-    "react-select": "^5.8.3",
     "react-toastify": "^10.0.6"
   },
   "devDependencies": {
@@ -40,7 +39,7 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "sass-embedded": "^1.81.0",
-    "vite": "^5.4.10"
+    "vite": "^5.4.11"
   },
   "config": {
     "commitizen": {

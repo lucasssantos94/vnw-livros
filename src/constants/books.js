@@ -1,10 +1,10 @@
 export const books = [
   {
-    title: "Python Levado a Sério",
-    category: "Tecnologia, Programação",
-    author: "Julien Danjou",
-    urlImage:
-      "https://books.google.com.br/books/publisher/content?id=3DPlDwAAQBAJ&hl=pt-BR&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U2hn7C7BjCvsESnrp7PpMLOAkmOGw&w=1280",
+    title:
+      "Fundamentos do React JS: Aprenda a bilioteca mais famosa de front-end através de exercícios e projetos",
+    category: "Tecnologia e Computação",
+    author: "Matheus Battisti",
+    urlImage: "https://m.media-amazon.com/images/I/71yde-JXeyL._SL1500_.jpg",
   },
   {
     title: "Estruturas de dados e algoritmos com JavaScript",
