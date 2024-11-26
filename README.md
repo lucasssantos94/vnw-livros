@@ -1,6 +1,8 @@
 ## 📖 Livros Vai Na Web
 
-Projeto do Bootcamp FullStack do programa Vai Na Web, com intuito de promover o acesso a leitura e conscientizar sobre a doação de livros
+Este projeto foi desenvolvido como parte do desafio final do módulo de Front-End do bootcamp FullStack oferecido pelo programa Vai Na Web. O objetivo principal é incentivar o acesso à leitura e aumentar a conscientização sobre a importância da doação de livros. Através de uma plataforma online, responsiva e intuitiva
+
+[Figma do Projeto](https://www.figma.com/design/MDGn9uI2Ny5Y8sOJWnmfRp?fuid=820112181950221170&prev-plan-id=1302898378186818949&prev-plan-type=team&prev-selected-view=recentsAndSharing)
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -34,6 +36,22 @@ Para manter o código consistente e padronizado, foram utilizadas as seguintes f
 
 - [Commitizen](https://commitizen-tools.github.io/commitizen/) - Ferramenta para facilitar a criação de commits seguindo o padrão de commit convencionais.
 
+## ⚙️ Funcionalidades
+
+Como ainda não há um back-end envolvido, utilizei uma abordagem simples para simular a integração com um banco de dados. A seguir estão as funcionalidades principais da aplicação:
+
+### Adicionar Livros
+
+- A função addBook permite que novos livros sejam adicionados à lista de forma dinâmica onde os dados dos livros são armazenados localmente, fornecendo informações como título, categoria, autor e URL da imagem de capa.
+
+- Com isso, mesmo sem um banco de dados real, os usuários podem simular a inserção de novos títulos no sistema.
+
+### Pesquisar livros cadastrados
+
+- Criado uma rota de pesquisa que usa o useParams do react-router-dom e realiza o filtro na lista de livros.
+
+- A pesquisa pode ser feita pelo título ou gênero do livro
+
 ## 📸 Screenshots
 
 ### 🖥️ Desktop
@@ -53,7 +71,7 @@ Para manter o código consistente e padronizado, foram utilizadas as seguintes f
 1. Clone o repositório:
 
 ```bash
-git clone url
+git clone https://github.com/lucasssantos94/vnw-livros.git
 ```
 
 2. Instale as dependecias:
