@@ -1,5 +1,5 @@
 import Container from "@components/Container";
-import pageNotFound from "@assets/images/404/page-404.png";
+import pageNotFound from "@assets/images/404/page-404.webp";
 
 import styles from "./style.module.scss";
 

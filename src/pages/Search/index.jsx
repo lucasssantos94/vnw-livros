@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import Book from "@components/Book";
 import Container from "@components/Container";
 import { books } from "@constants/books";
-import BookNotFound from "@assets/images/404/book-not-found.png";
+import BookNotFound from "@assets/images/404/book-not-found.webp";
 
 import styles from "./styles.module.scss";
 
