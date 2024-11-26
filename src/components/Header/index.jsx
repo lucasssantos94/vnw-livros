@@ -29,7 +29,7 @@ const Header = () => {
       <Container>
         <NavLink to="/" className={styles.logo}>
           <img src={Logo} alt="Logo de um livro aberto" />
-          <h1>Livros Vai na Web</h1>
+          <h1>Livros Vai Na Web</h1>
         </NavLink>
 
         {isMobile ? (
