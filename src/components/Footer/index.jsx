@@ -10,13 +10,13 @@ const Footer = () => {
         <Container>
           <p>4002-8922</p>
 
-          <div className={styles["social-links"]}>
+          <nav className={styles["social-links"]}>
             {socialLinks.map((link) => (
               <a key={link.id} href={link.url} target="_blank" rel="noreferrer">
                 <img src={link.icon} alt={`logo ${link.name}`} />
               </a>
             ))}
-          </div>
+          </nav>
         </Container>
       </section>
       <section className={styles["copy-footer"]}>

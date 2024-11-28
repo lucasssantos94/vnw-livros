@@ -7,6 +7,11 @@
     box-shadow: global.$box-shadow;
     @include global.flex($justify: center, $align: center, $direction: column, $gap: 3rem);
 
+    img {
+        max-width: 100%;
+        aspect-ratio: 3/3;
+    }
+
     p {
         text-align: center;
     }
