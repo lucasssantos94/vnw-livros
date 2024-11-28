@@ -3,6 +3,11 @@
     background: url("@assets/images/home/bg-home.webp") no-repeat center;
     background-size: cover;
 
+    @include global.media-query(sm) {
+        background: url("@assets/images/home/bg-home-mobile.webp") no-repeat center;
+        background-size: cover;
+    }
+
     &>div {
         @include global.flex($align: center);
 
