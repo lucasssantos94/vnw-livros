@@ -8,8 +8,8 @@
     @include global.flex($justify: center, $align: center, $direction: column, $gap: 3rem);
 
     img {
-        max-width: 100%;
-        aspect-ratio: 3/3;
+        max-width: 10rem;
+        height: auto;
     }
 
     p {
