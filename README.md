@@ -87,9 +87,9 @@ pnpm install
 3. Execute o projeto:
 
 ```bash
-npm run build
+npm run dev
 # ou
-yarn build
+yarn dev
 # ou
-pnpm build
+pnpm dev
 ```
