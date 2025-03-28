@@ -1,35 +1,4 @@
-export const books = [
-  {
-    title:
-      "Fundamentos do React JS: Aprenda a bilioteca mais famosa de front-end através de exercícios e projetos",
-    category: "Tecnologia e Computação",
-    author: "Matheus Battisti",
-    urlImage: "https://m.media-amazon.com/images/I/71yde-JXeyL._SL1500_.jpg",
-  },
-  {
-    title: "Estruturas de dados e algoritmos com JavaScript",
-    category: "Tecnologia, Programação",
-    author: "Loiane Groner",
-    urlImage:
-      "https://books.google.com.br/books/publisher/content?id=0nWKDwAAQBAJ&hl=pt-BR&pg=PA4&img=1&zoom=3&bul=1&sig=ACfU3U1Rntr1z1ysc0uIvTy9xDJw7YvgKQ&w=1280",
-  },
-  {
-    title: "Código Limpo",
-    category: "Tecnologia, Programação",
-    author: "Robert C. Martin",
-    urlImage:
-      "https://http2.mlstatic.com/D_NQ_NP_677433-MLU72592365557_102023-O.webp",
-  },
-  {
-    title: "A menina que roubava livros",
-    category: " Romance, Ficção juvenil, Ficção histórica,",
-    author: "Markus Zusak",
-    urlImage:
-      "https://books.google.com.br/books/content?id=-_MMbijUmTEC&hl=pt-BR&pg=PP1&img=1&zoom=3&bul=1&sig=ACfU3U1tp8sOMKZud7hUmlJIIg9fwj8yZA&w=1280",
-  },
-];
-
-export const categoriesBooks = [
+const categoriesBooks = [
   "Ficção Científica",
   "Fantasia",
   "Romance",
@@ -104,3 +73,5 @@ export const categoriesBooks = [
   "Livros de Bolso",
   "Pintura e Desenho",
 ].sort();
+
+export default categoriesBooks;

@@ -11,7 +11,7 @@ const Book = ({ book }) => {
 
       <div className={styles["info-book"]}>
         <h3 className={styles["title-book"]}>{book.titulo}</h3>
-        <h4 className={styles["author-book"]}>{book.autor}</h4>
+        <h5 className={styles["author-book"]}>{book.autor}</h5>
         <h4 className={styles["category-book"]}>{book.categoria}</h4>
       </div>
     </article>

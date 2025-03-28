@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRef, useEffect, useState } from "react";
 import CustomDatalist from "@components/Datalist";
-import { categoriesBooks } from "@constants/books";
+import categoriesBooks from "@constants/categoriesBooks";
 import { toast } from "react-toastify";
 import axios from "axios";
 
