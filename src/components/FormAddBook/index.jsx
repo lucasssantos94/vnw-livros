@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import CustomDatalist from "@components/Datalist";
 import { addBook, categoriesBooks } from "@constants/books";
 import { toast } from "react-toastify";
@@ -9,6 +10,8 @@ import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";
 
 const FormAddBook = () => {
+  const [isSending, setIsSending] = useState(false);
+
   const {
     handleSubmit,
     register,
@@ -21,27 +24,28 @@ const FormAddBook = () => {
   const formRef = useRef(null);
   const datalistRef = useRef(null);
 
-  const notify = () => {
-    toast.success("Livro cadastrado! Obrigado pela doação", {
-      position: "top-right",
-      autoClose: 2500,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
+  const onSubmit = async (data) => {
+    setIsSending(true);
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      const response = await axios.post(`${apiUrl}/doar`, {
+        titulo: data.title,
+        categoria: data.category,
+        autor: data.author,
+        imagem_url: data.urlImage,
+      });
 
-  const onSubmit = (data) => {
-    addBook(data.title, data.category, data.author, data.urlImage);
-
-    if (datalistRef.current) {
-      datalistRef.current.reset();
+      if (datalistRef.current) {
+        datalistRef.current.reset();
+      }
+      toast.success("Livro cadastrado, Obrigado pela doação");
+      reset();
+    } catch (error) {
+      console.error(error);
+      toast.error("Erro ao cadastrar livro, tente novamente");
+    } finally {
+      setIsSending(false);
     }
-    notify();
-    reset();
   };
 
   useEffect(() => {
@@ -138,7 +142,11 @@ const FormAddBook = () => {
         )}
       </div>
 
-      <input type="submit" value="Doar" />
+      <input
+        type="submit"
+        value={isSending ? "Enviando..." : "Enviar"}
+        disabled={isSending}
+      />
     </form>
   );
 };
