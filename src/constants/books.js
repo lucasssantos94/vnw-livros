@@ -104,13 +104,3 @@ export const categoriesBooks = [
   "Livros de Bolso",
   "Pintura e Desenho",
 ].sort();
-
-export const addBook = (title, category, author, urlImage) => {
-  const book = {
-    title: title,
-    category: category,
-    author: author,
-    urlImage: urlImage,
-  };
-  books.push(book);
-};

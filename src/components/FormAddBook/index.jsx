@@ -1,8 +1,7 @@
-/* eslint-disable no-unused-vars */
 import { useForm } from "react-hook-form";
 import { useRef, useEffect, useState } from "react";
 import CustomDatalist from "@components/Datalist";
-import { addBook, categoriesBooks } from "@constants/books";
+import { categoriesBooks } from "@constants/books";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -28,7 +27,7 @@ const FormAddBook = () => {
     setIsSending(true);
     try {
       const apiUrl = import.meta.env.VITE_API_URL;
-      const response = await axios.post(`${apiUrl}/doar`, {
+      await axios.post(`${apiUrl}/doar`, {
         titulo: data.title,
         categoria: data.category,
         autor: data.author,
