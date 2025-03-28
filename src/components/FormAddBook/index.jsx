@@ -130,8 +130,9 @@ const FormAddBook = () => {
           {...register("urlImage", {
             required: { value: true, message: "Campo obrigatório" },
             pattern: {
-              value: /^(https?:\/\/)?([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})([/?].*)?/,
-              message: "Insira um link válido",
+              value:
+                /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?\.(jpg|jpeg|png|bmp|webp|svg|)$/i,
+              message: "Insira um link válido (deve conter uma imagem)",
             },
           })}
         />
