@@ -10,6 +10,8 @@ const BooksPage = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchBooks = async () => {
       setIsLoading(true);
       try {
@@ -24,6 +26,10 @@ const BooksPage = () => {
     };
 
     fetchBooks();
+
+    return () => {
+      controller.abort();
+    };
   }, []);
 
   return (
@@ -36,10 +42,14 @@ const BooksPage = () => {
             <div className={style["loading"]}>
               <h1>Carregando</h1>
             </div>
+          ) : books.length === 0 ? (
+            <div className={style["empty-state"]}>
+              <h2>Nenhum livro disponível</h2>
+            </div>
           ) : (
             <div className={style["box-books"]}>
               {books.map((book) => (
-                <Book key={book.titulo} book={book} />
+                <Book key={book.id} book={book} />
               ))}
             </div>
           )}

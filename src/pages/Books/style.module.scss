@@ -11,4 +11,11 @@
         grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
         gap: 2rem;
     }
+
+    .empty-state {
+        h2 {
+            margin-top: 4rem;
+            font-size: 3rem;
+        }
+    }
 }

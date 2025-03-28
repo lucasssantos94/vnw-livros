@@ -37,7 +37,9 @@ const FormAddBook = () => {
       if (datalistRef.current) {
         datalistRef.current.reset();
       }
-      toast.success("Livro cadastrado, Obrigado pela doação");
+      toast.success("Livro cadastrado, Obrigado pela doação", {
+        autoClose: 1000,
+      });
       reset();
     } catch (error) {
       console.error(error);
@@ -130,7 +132,7 @@ const FormAddBook = () => {
             required: { value: true, message: "Campo obrigatório" },
             pattern: {
               value:
-                /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?\.(jpg|jpeg|png|bmp|webp|svg|)$/i,
+                /^https:\/\/(www\.)?[\w-@:%._+~#=]{1,256}\.[a-z\d()]{1,6}\b([\w-@:%+._~#?&//=]*)$/i,
               message: "Insira um link válido (deve conter uma imagem)",
             },
           })}
