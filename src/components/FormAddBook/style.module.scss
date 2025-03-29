@@ -54,7 +54,10 @@
         color: global.$light-color;
         font-size: 2rem;
         cursor: pointer;
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
     }
-
-
 }

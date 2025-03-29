@@ -1,9 +1,9 @@
 import Container from "@components/Container";
 import Book from "@components/Book";
-// import { books } from "@constants/books";
 import style from "./style.module.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BookLoader from "../../components/BookLoading";
 
 const BooksPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +18,9 @@ const BooksPage = () => {
         const apiUrl = import.meta.env.VITE_API_URL;
         const response = await axios.get(`${apiUrl}/livros`);
         setBooks(response.data);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000);
       } catch (error) {
         console.error("Error fetching books:", error);
         setIsLoading(false);
@@ -40,7 +42,7 @@ const BooksPage = () => {
 
           {isLoading ? (
             <div className={style["loading"]}>
-              <h1>Carregando</h1>
+              <BookLoader />
             </div>
           ) : books.length === 0 ? (
             <div className={style["empty-state"]}>
