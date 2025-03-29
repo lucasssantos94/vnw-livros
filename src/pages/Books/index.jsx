@@ -22,7 +22,7 @@ const BooksPage = () => {
           setIsLoading(false);
         }, 1000);
       } catch (error) {
-        console.error("Error fetching books:", error);
+        console.error("Erro ao carregar livros:", error);
         setIsLoading(false);
       }
     };
