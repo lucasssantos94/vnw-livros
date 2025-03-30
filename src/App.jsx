@@ -5,15 +5,13 @@ import RootLayout from "@components/RootLayout";
 
 const App = () => {
   return (
-    <>
-      <RootLayout>
-        <Header />
-        <main>
-          <Outlet />
-        </main>
-        <Footer />
-      </RootLayout>
-    </>
+    <RootLayout>
+      <Header />
+      <main>
+        <Outlet />
+      </main>
+      <Footer />
+    </RootLayout>
   );
 };
 
