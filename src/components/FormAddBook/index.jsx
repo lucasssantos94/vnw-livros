@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect } from "react";
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
-import { useDonateBook } from "../../hooks/useDonateBook";
+import { useDonateBook } from "@hooks/useDonateBook";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";

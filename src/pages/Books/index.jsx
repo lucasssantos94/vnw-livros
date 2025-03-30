@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { useBooks } from "../../hooks/useBook";
+import { useBooks } from "@hooks/useBook";
 import Container from "@components/Container";
 import Book from "@components/Book";
-import BookLoader from "../../components/BookLoading";
+import BookLoader from "@components/BookLoading";
 import style from "./style.module.scss";
 
 const BooksPage = () => {
