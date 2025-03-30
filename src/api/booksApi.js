@@ -11,4 +11,8 @@ export const bookApiServices = {
     const response = await axios.post(`${baseUrlApi}/doar`, bookData);
     return response.data;
   },
+  searchBook: async (title) => {
+    const response = await axios.get(`http://localhost:5000/livros/${title}`);
+    return response.data;
+  },
 };
