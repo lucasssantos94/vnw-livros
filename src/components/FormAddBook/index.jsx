@@ -1,15 +1,14 @@
 import { useForm } from "react-hook-form";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
-import { toast } from "react-toastify";
-import axios from "axios";
+import { useDonateBook } from "../../hooks/useDonateBook";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";
 
 const FormAddBook = () => {
-  const [isSending, setIsSending] = useState(false);
+  const { isSending, handleDonateBook } = useDonateBook();
 
   const {
     handleSubmit,
@@ -23,30 +22,13 @@ const FormAddBook = () => {
   const formRef = useRef(null);
   const datalistRef = useRef(null);
 
-  const onSubmit = async (data) => {
-    setIsSending(true);
-    try {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      await axios.post(`${apiUrl}/doar`, {
-        titulo: data.title,
-        categoria: data.category,
-        autor: data.author,
-        imagem_url: data.urlImage,
-      });
-
+  const onSubmit = (data) => {
+    handleDonateBook(data, () => {
+      reset();
       if (datalistRef.current) {
         datalistRef.current.reset();
       }
-      toast.success("Livro cadastrado, Obrigado pela doação", {
-        autoClose: 1000,
-      });
-      reset();
-    } catch (error) {
-      console.error(error);
-      toast.error("Erro ao cadastrar livro, tente novamente");
-    } finally {
-      setIsSending(false);
-    }
+    });
   };
 
   useEffect(() => {

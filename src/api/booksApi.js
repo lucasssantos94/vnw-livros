@@ -7,4 +7,8 @@ export const bookApiServices = {
     const response = await axios.get(`${baseUrlApi}/livros`);
     return response.data;
   },
+  donateBook: async (bookData) => {
+    const response = await axios.post(`${baseUrlApi}/doar`, bookData);
+    return response.data;
+  },
 };
