@@ -19,14 +19,16 @@ export const useDonateBook = () => {
       });
 
       toast.success("Livro cadastrado, Obrigado pela doação", {
-        autoClose: 1000,
+        autoClose: 3000,
       });
 
       if (onSucess) onSucess();
     } catch (error) {
       setError(error);
       console.log(error);
-      toast.error("Erro ao cadastrar livro, tente novamente");
+      toast.error("Erro ao cadastrar livro, tente novamente", {
+        autoClose: false,
+      });
     } finally {
       setIsSending(false);
     }
