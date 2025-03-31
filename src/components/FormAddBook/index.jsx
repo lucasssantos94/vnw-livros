@@ -3,12 +3,15 @@ import { useRef, useEffect } from "react";
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
+import { useImagePreview } from "../../hooks/useImagePreview";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";
 
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
+  const { imagePreview, setImagepreview, handleImagePreview } =
+    useImagePreview();
 
   const {
     handleSubmit,
@@ -28,6 +31,8 @@ const FormAddBook = () => {
       if (datalistRef.current) {
         datalistRef.current.reset();
       }
+
+      setImagepreview(null);
     });
   };
 
@@ -118,6 +123,7 @@ const FormAddBook = () => {
               message: "Insira um link válido (deve conter uma imagem)",
             },
           })}
+          onChange={handleImagePreview}
         />
         {errors.urlImage && (
           <span className={styles["error-message"]}>
@@ -125,6 +131,13 @@ const FormAddBook = () => {
           </span>
         )}
       </div>
+
+      {imagePreview && (
+        <div className={styles["image-preview"]}>
+          <h3>visualização da Capa</h3>
+          <img src={imagePreview} alt="preview da apa" />
+        </div>
+      )}
 
       <input
         type="submit"
