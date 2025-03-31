@@ -12,7 +12,7 @@ export const bookApiServices = {
     return response.data;
   },
   searchBook: async (title) => {
-    const response = await axios.get(`http://localhost:5000/livros/${title}`);
+    const response = await axios.get(`${baseUrlApi}/livros/${title}`);
     return response.data;
   },
 };

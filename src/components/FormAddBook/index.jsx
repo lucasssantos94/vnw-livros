@@ -131,14 +131,12 @@ const FormAddBook = () => {
           </span>
         )}
       </div>
-
       {imagePreview && (
         <div className={styles["image-preview"]}>
           <h3>visualização da Capa</h3>
           <img src={imagePreview} alt="preview da apa" />
         </div>
       )}
-
       <input
         type="submit"
         value={isSending ? "Enviando..." : "Enviar"}
