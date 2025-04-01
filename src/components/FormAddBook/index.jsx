@@ -13,6 +13,13 @@ const FormAddBook = () => {
   const { imagePreview, setImagepreview, handleImagePreview } =
     useImagePreview();
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const {
     handleSubmit,
     register,
@@ -33,13 +40,14 @@ const FormAddBook = () => {
       }
 
       setImagepreview(null);
+      scrollToTop();
     });
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (formRef.current && !formRef.current.contains(event.target)) {
-        clearErrors(); // Limpa todos os erros
+        clearErrors();
       }
     };
 
@@ -134,6 +142,7 @@ const FormAddBook = () => {
       {imagePreview && (
         <div className={styles["image-preview"]}>
           <h3>visualização da Capa</h3>
+
           <img src={imagePreview} alt="preview da apa" />
         </div>
       )}

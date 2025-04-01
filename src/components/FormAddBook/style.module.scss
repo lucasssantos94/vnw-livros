@@ -7,6 +7,18 @@
     border-radius: 2rem;
     padding: 2rem;
 
+    @include global.media-query(1700px) {
+        &:has(.image-preview) {
+            height: 90rem;
+        }
+    }
+
+    @include global.media-query(sm) {
+        &:has(.image-preview) {
+            height: 85rem;
+        }
+    }
+
     .form-header {
         @include global.flex($align: center, $gap: 2rem);
 
@@ -17,6 +29,7 @@
         h3 {
             color: global.$brand-color;
             font-weight: normal;
+            display: flex;
         }
     }
 
@@ -67,10 +80,12 @@
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
-    position: absolute;
-    top: 30%;
-    right: 10%;
     text-align: center;
+
+    h3 {
+        color: global.$brand-color;
+        font-weight: normal;
+    }
 
     img {
         max-width: 250px;
