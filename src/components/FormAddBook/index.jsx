@@ -4,6 +4,7 @@ import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
 import { useImagePreview } from "../../hooks/useImagePreview";
+import scrollToTop from "../../utils/scrollToTop";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";
@@ -12,13 +13,6 @@ const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
   const { imagePreview, setImagepreview, handleImagePreview } =
     useImagePreview();
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
 
   const {
     handleSubmit,
