@@ -76,6 +76,7 @@
 }
 
 .image-preview {
+    min-height: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,7 +90,8 @@
 
     img {
         max-width: 250px;
-        height: auto;
+        min-height: 300px;
+
         border-radius: 5px;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     }

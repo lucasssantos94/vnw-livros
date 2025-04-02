@@ -137,7 +137,7 @@ const FormAddBook = () => {
         <div className={styles["image-preview"]}>
           <h3>visualização da Capa</h3>
 
-          <img src={imagePreview} alt="preview da apa" />
+          <img src={imagePreview} alt="preview da capa do livro" />
         </div>
       )}
       <input
