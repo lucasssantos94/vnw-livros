@@ -3,20 +3,23 @@ import { useRef, useEffect, useState } from "react";
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
-import { useImagePreview } from "../../hooks/useImagePreview";
+import { useImagePreview } from "@hooks/useImagePreview";
 import scrollToTop from "../../utils/scrollToTop";
 import useUploadImage from "@hooks/useUploadImage";
 
 import iconForm from "@assets/images/icons/icon-form.png";
+import iconUrl from "@assets/images/icons/icon-url.svg";
+import iconImage from "@assets/images/icons/icon-image.svg";
+
 import styles from "./style.module.scss";
 
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
-
   const { imagePreview, handleUrlPreview, handleFilePreview, setImagepreview } =
     useImagePreview();
-
-  const { uploadImage } = useUploadImage();
+  const { uploadImage, isUploading } = useUploadImage();
+  const [uploadImageOption, setUploadImageOption] = useState("url");
+  const [fileName, setFileName] = useState("");
 
   const {
     handleSubmit,
@@ -26,8 +29,6 @@ const FormAddBook = () => {
     reset,
     clearErrors,
   } = useForm();
-
-  const [uploadImageOption, setUploadImageOption] = useState("url");
 
   const formRef = useRef(null);
   const datalistRef = useRef(null);
@@ -50,6 +51,7 @@ const FormAddBook = () => {
         datalistRef.current.reset();
       }
       setImagepreview(null);
+      setFileName("");
       scrollToTop();
     });
   };
@@ -129,12 +131,28 @@ const FormAddBook = () => {
       </div>
 
       <div className={styles["box-input"]}>
-        <div>
-          <button type="button" onClick={() => setUploadImageOption("url")}>
+        <div className={styles["upload-options"]}>
+          <button
+            type="button"
+            className={`${styles["option-button"]} ${
+              uploadImageOption === "url" ? styles["active"] : ""
+            }`}
+            onClick={() => setUploadImageOption("url")}
+            disabled={isUploading}
+          >
+            <img src={iconUrl} alt="icon url" />
             URL
           </button>
-          <button type="button" onClick={() => setUploadImageOption("file")}>
-            Upload
+          <button
+            type="button"
+            className={`${styles["option-button"]} ${
+              uploadImageOption === "file" ? styles["active"] : ""
+            }`}
+            onClick={() => setUploadImageOption("file")}
+            disabled={isUploading}
+          >
+            <img src={iconImage} alt="icon image" />
+            ARQUIVO
           </button>
         </div>
 
@@ -143,7 +161,7 @@ const FormAddBook = () => {
             <input
               type="text"
               name="urlImage"
-              placeholder="Link da Imagem"
+              placeholder="Link da Imagem (ex: https://exemplo.com/imagem.jpg)"
               {...register("urlImage", {
                 required: { value: true, message: "Campo obrigatório" },
                 pattern: {
@@ -163,38 +181,51 @@ const FormAddBook = () => {
             )}
           </>
         ) : (
-          <>
+          <div className={styles["file-input-wrapper"]}>
             <input
               type="file"
+              id="fileUpload"
               name="fileImage"
               accept="image/*"
               {...register("fileImage", {
                 required: { value: true, message: "Campo obrigatório" },
               })}
               onChange={(e) => {
-                handleFilePreview(e.target.files[0]);
+                const file = e.target.files[0];
+                handleFilePreview(file);
+                setFileName(file?.name || "");
               }}
+              className={styles["file-input"]}
             />
+            <label
+              htmlFor="fileUpload"
+              className={`${styles["custom-file-input"]} ${
+                fileName ? styles["has-file"] : ""
+              }`}
+            >
+              {fileName || "Nenhum arquivo selecionado"}
+            </label>
             {errors.fileImage && (
               <span className={styles["error-message"]}>
                 {errors.fileImage.message}
               </span>
             )}
-          </>
+          </div>
         )}
       </div>
 
       {imagePreview && (
         <div className={styles["image-preview"]}>
-          <h3>visualização da Capa</h3>
-
+          <h3>Visualização da Capa</h3>
           <img src={imagePreview} alt="preview da capa do livro" />
         </div>
       )}
+
       <input
         type="submit"
-        value={isSending ? "Enviando..." : "Enviar"}
-        disabled={isSending}
+        value={isSending || isUploading ? "Enviando..." : "Enviar"}
+        disabled={isSending || isUploading}
+        className={styles["submit-button"]}
       />
     </form>
   );

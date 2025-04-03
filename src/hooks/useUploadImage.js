@@ -10,6 +10,10 @@ const useUploadImage = () => {
   const urlCloudinary = import.meta.env.VITE_CLOUDINARY_URL;
 
   const uploadImage = async (file) => {
+    if (file.size > 2 * 1024 * 1024) {
+      alert("O arquivo deve ter no máximo 2MB");
+      return;
+    }
     if (!file) return;
 
     const formData = new FormData();

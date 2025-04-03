@@ -1,17 +1,6 @@
-// import { useState } from "react";
-
-// export const useImagePreview = () => {
-//   const [imagePreview, setImagepreview] = useState(null);
-
-//   const handleImagePreview = (e) => {
-//     const url = e.target.value;
-//     setImagepreview(url);
-//   };
-
-//   return { imagePreview, setImagepreview, handleImagePreview };
-// };
-
 import { useState, useCallback } from "react";
+import { toast } from "react-toastify";
+import scrollToTop from "../utils/scrollToTop";
 
 export const useImagePreview = () => {
   const [imagePreview, setImagepreview] = useState(null);
@@ -23,6 +12,14 @@ export const useImagePreview = () => {
   }, []);
 
   const handleFilePreview = useCallback((file) => {
+    if (file.size > 2 * 1024 * 1024) {
+      toast.error("O arquivo deve ter no máximo 2MB", {
+        autoClose: false,
+      });
+      setImagepreview(null);
+      scrollToTop();
+      return;
+    }
     if (file) {
       const url = URL.createObjectURL(file);
       setImagepreview(url);
@@ -43,10 +40,10 @@ export const useImagePreview = () => {
 
   return {
     imagePreview,
-    file,
     handleUrlPreview,
     handleFilePreview,
     clearPreview,
+    file,
     setImagepreview,
   };
 };
