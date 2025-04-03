@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .form-add-book {
     @include global.flex($align: center, $direction: column, $justify: space-between);
     width: 100%;
@@ -39,13 +41,19 @@
 
         input:not(input[type="submit"]) {
             width: 100%;
-            border-radius: 15px;
+            border-radius: 6px;
             border: 2px solid global.$brand-color;
-            padding: 0.875rem 1.4rem;
+            padding: 1.2rem 1.6rem;
 
             &::placeholder {
-                color: global.$dark-color;
+                color: color.adjust(global.$brand-color, $lightness: 10%)
             }
+
+            &:focus-visible {
+                outline: none;
+            }
+
+
         }
 
         .error-message {
@@ -124,10 +132,11 @@
             border: 2px dashed rgba(global.$brand-color, 0.4);
             border-radius: 6px;
             background: rgba(global.$brand-color, 0.05);
-            color: global.$brand-color;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            color: global.$brand-color;
+            font-size: 1.2rem;
 
             &:hover {
                 border-color: global.$brand-color;
@@ -135,10 +144,14 @@
             }
 
             &.has-file {
-                color: darken(global.$brand-color, 10%);
+                color: color.adjust(global.$brand-color, $lightness: 10%);
                 border-style: solid;
                 background: rgba(global.$brand-color, 0.08);
             }
+        }
+
+        label {
+            font-size: 1.2rem;
         }
     }
 
@@ -183,11 +196,11 @@
         transition: background 0.3s ease;
 
         &:hover:not(:disabled) {
-            background: darken(global.$brand-color, 8%);
+            background: color.adjust(global.$brand-color, $lightness: 8%, $space: hsl)
         }
 
         &:disabled {
-            background: lighten(global.$brand-color, 30%);
+            background: color.adjust(global.$brand-color, $lightness: 30%, $space: hsl);
             cursor: not-allowed;
         }
     }

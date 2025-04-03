@@ -15,8 +15,13 @@ import styles from "./style.module.scss";
 
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
-  const { imagePreview, handleUrlPreview, handleFilePreview, setImagepreview } =
-    useImagePreview();
+  const {
+    imagePreview,
+    handleUrlPreview,
+    handleFilePreview,
+    setImagepreview,
+    clearPreview,
+  } = useImagePreview();
   const { uploadImage, isUploading } = useUploadImage();
   const [uploadImageOption, setUploadImageOption] = useState("url");
   const [fileName, setFileName] = useState("");
@@ -67,7 +72,31 @@ const FormAddBook = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [clearErrors]);
+  }, [clearErrors, clearPreview]);
+
+  useEffect(() => {
+    setValue("urlImage", "");
+    setValue("fileImage", null);
+    setFileName("");
+    clearErrors("urlImage");
+    clearErrors("fileImage");
+
+    const fileInput = formRef.current.querySelector(".file-input");
+    if (fileInput) {
+      fileInput.value = "";
+    }
+
+    if (imagePreview) {
+      setImagepreview(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [uploadImageOption]);
+
+  useEffect(() => {
+    return () => {
+      clearPreview();
+    };
+  }, [clearPreview]);
 
   return (
     <form
@@ -159,7 +188,7 @@ const FormAddBook = () => {
         {uploadImageOption === "url" ? (
           <>
             <input
-              type="text"
+              type="url"
               name="urlImage"
               placeholder="Link da Imagem (ex: https://exemplo.com/imagem.jpg)"
               {...register("urlImage", {

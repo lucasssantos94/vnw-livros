@@ -14,7 +14,6 @@ export const useSearchBook = () => {
       setSearchedBooks(data.length > 0 ? data : []);
     } catch (error) {
       console.log(`Erro ao buscar livro: ${error}`);
-      console.log(error.status);
       setError(error.message || "Erro ao buscar livro.");
     } finally {
       setIsLoading(false);

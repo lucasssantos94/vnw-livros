@@ -35,6 +35,7 @@ export const useImagePreview = () => {
       URL.revokeObjectURL(file);
       setFile(null);
       setImagepreview(null);
+      console.log("limpou");
     }
   }, [file]);
 
