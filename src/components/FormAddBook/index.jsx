@@ -5,6 +5,7 @@ import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
 import { useImagePreview } from "../../hooks/useImagePreview";
 import scrollToTop from "../../utils/scrollToTop";
+import useUploadImage from "@hooks/useUploadImage";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import styles from "./style.module.scss";
@@ -12,13 +13,10 @@ import styles from "./style.module.scss";
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
 
-  const {
-    imagePreview,
-    handleUrlPreview,
-    handleFilePreview,
-    setImagepreview,
-    clearPreview,
-  } = useImagePreview();
+  const { imagePreview, handleUrlPreview, handleFilePreview, setImagepreview } =
+    useImagePreview();
+
+  const { uploadImage } = useUploadImage();
 
   const {
     handleSubmit,
@@ -34,10 +32,19 @@ const FormAddBook = () => {
   const formRef = useRef(null);
   const datalistRef = useRef(null);
 
-  setImagepreview(null);
+  const onSubmit = async (data) => {
+    let uploadedImageUrl = data.urlImage;
+    if (uploadImageOption === "file" && data.fileImage[0]) {
+      uploadedImageUrl = await uploadImage(data.fileImage[0]);
+      if (!uploadedImageUrl) return;
+    }
 
-  const onSubmit = (data) => {
-    handleDonateBook(data, () => {
+    const bookData = {
+      ...data,
+      urlImage: uploadedImageUrl,
+    };
+
+    handleDonateBook(bookData, () => {
       reset();
       if (datalistRef.current) {
         datalistRef.current.reset();
