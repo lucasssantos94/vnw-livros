@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
@@ -11,8 +11,14 @@ import styles from "./style.module.scss";
 
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
-  const { imagePreview, setImagepreview, handleImagePreview } =
-    useImagePreview();
+
+  const {
+    imagePreview,
+    handleUrlPreview,
+    handleFilePreview,
+    setImagepreview,
+    clearPreview,
+  } = useImagePreview();
 
   const {
     handleSubmit,
@@ -23,8 +29,12 @@ const FormAddBook = () => {
     clearErrors,
   } = useForm();
 
+  const [uploadImageOption, setUploadImageOption] = useState("url");
+
   const formRef = useRef(null);
   const datalistRef = useRef(null);
+
+  setImagepreview(null);
 
   const onSubmit = (data) => {
     handleDonateBook(data, () => {
@@ -32,7 +42,6 @@ const FormAddBook = () => {
       if (datalistRef.current) {
         datalistRef.current.reset();
       }
-
       setImagepreview(null);
       scrollToTop();
     });
@@ -58,7 +67,7 @@ const FormAddBook = () => {
       ref={formRef}
     >
       <div className={styles["form-header"]}>
-        <img src={iconForm} alt="" />
+        <img src={iconForm} alt="icon book" />
         <h3>Informações do Livro</h3>
       </div>
 
@@ -113,26 +122,61 @@ const FormAddBook = () => {
       </div>
 
       <div className={styles["box-input"]}>
-        <input
-          type="text"
-          name="urlImage"
-          placeholder="Link da Imagem"
-          {...register("urlImage", {
-            required: { value: true, message: "Campo obrigatório" },
-            pattern: {
-              value:
-                /^https:\/\/(www\.)?[\w-@:%._+~#=]{1,256}\.[a-z\d()]{1,6}\b([\w-@:%+._~#?&//=]*)$/i,
-              message: "Insira um link válido (deve conter uma imagem)",
-            },
-          })}
-          onChange={handleImagePreview}
-        />
-        {errors.urlImage && (
-          <span className={styles["error-message"]}>
-            {errors.urlImage.message}
-          </span>
+        <div>
+          <button type="button" onClick={() => setUploadImageOption("url")}>
+            URL
+          </button>
+          <button type="button" onClick={() => setUploadImageOption("file")}>
+            Upload
+          </button>
+        </div>
+
+        {uploadImageOption === "url" ? (
+          <>
+            <input
+              type="text"
+              name="urlImage"
+              placeholder="Link da Imagem"
+              {...register("urlImage", {
+                required: { value: true, message: "Campo obrigatório" },
+                pattern: {
+                  value:
+                    /^https:\/\/(www\.)?[\w-@:%._+~#=]{1,256}\.[a-z\d()]{1,6}\b([\w-@:%+._~#?&//=]*)$/i,
+                  message: "Insira um link válido (deve conter uma imagem)",
+                },
+              })}
+              onChange={(e) => {
+                handleUrlPreview(e.target.value);
+              }}
+            />
+            {errors.urlImage && (
+              <span className={styles["error-message"]}>
+                {errors.urlImage.message}
+              </span>
+            )}
+          </>
+        ) : (
+          <>
+            <input
+              type="file"
+              name="fileImage"
+              accept="image/*"
+              {...register("fileImage", {
+                required: { value: true, message: "Campo obrigatório" },
+              })}
+              onChange={(e) => {
+                handleFilePreview(e.target.files[0]);
+              }}
+            />
+            {errors.fileImage && (
+              <span className={styles["error-message"]}>
+                {errors.fileImage.message}
+              </span>
+            )}
+          </>
         )}
       </div>
+
       {imagePreview && (
         <div className={styles["image-preview"]}>
           <h3>visualização da Capa</h3>
