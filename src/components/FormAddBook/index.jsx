@@ -14,6 +14,7 @@ import iconUrl from "@assets/images/icons/icon-url.svg";
 import iconImage from "@assets/images/icons/icon-image.svg";
 
 import styles from "./style.module.scss";
+import { toast } from "react-toastify";
 
 const FormAddBook = () => {
   const { isSending, handleDonateBook } = useDonateBook();
@@ -42,6 +43,15 @@ const FormAddBook = () => {
 
   const onSubmit = async (data) => {
     let uploadedImageUrl = data.urlImage;
+
+    if (data.fileImage[0].size > 2 * 1024 * 1024) {
+      toast.error("O arquivo deve ter no máximo 2MB", {
+        autoClose: false,
+      });
+      scrollToTop();
+      return;
+    }
+
     if (uploadImageOption === "file" && data.fileImage[0]) {
       uploadedImageUrl = await uploadImage(data.fileImage[0]);
       if (!uploadedImageUrl) return;
