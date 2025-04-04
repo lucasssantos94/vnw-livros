@@ -13,7 +13,6 @@ export const useSearchBook = () => {
       const data = await bookApiServices.searchBook(title);
       setSearchedBooks(data.length > 0 ? data : []);
     } catch (error) {
-      console.log(`Erro ao buscar livro: ${error}`);
       setError(error.message || "Erro ao buscar livro.");
     } finally {
       setIsLoading(false);

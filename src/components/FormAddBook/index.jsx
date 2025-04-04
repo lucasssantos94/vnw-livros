@@ -185,7 +185,11 @@ const FormAddBook = () => {
             onClick={() => setUploadImageOption("file")}
             disabled={isUploading}
           >
-            <img src={iconImage} alt="icon image" />
+            <img
+              src={iconImage}
+              alt="icon image"
+              className={styles["image-icon"]}
+            />
             ARQUIVO
           </button>
         </div>
