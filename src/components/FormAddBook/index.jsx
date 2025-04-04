@@ -1,11 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useForm } from "react-hook-form";
 import { useRef, useEffect, useState } from "react";
-import CustomDatalist from "@components/Datalist";
-import categoriesBooks from "@constants/categoriesBooks";
 import { useDonateBook } from "@hooks/useDonateBook";
 import { useImagePreview } from "@hooks/useImagePreview";
-import scrollToTop from "../../utils/scrollToTop";
 import useUploadImage from "@hooks/useUploadImage";
+
+import CustomDatalist from "@components/Datalist";
+import categoriesBooks from "@constants/categoriesBooks";
+import scrollToTop from "../../utils/scrollToTop";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import iconUrl from "@assets/images/icons/icon-url.svg";
@@ -76,27 +78,20 @@ const FormAddBook = () => {
 
   useEffect(() => {
     setValue("urlImage", "");
-    setValue("fileImage", null);
     setFileName("");
     clearErrors("urlImage");
     clearErrors("fileImage");
 
-    const fileInput = formRef.current.querySelector(".file-input");
-    if (fileInput) {
-      fileInput.value = "";
-    }
-
     if (imagePreview) {
       setImagepreview(null);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uploadImageOption]);
 
   useEffect(() => {
     return () => {
       clearPreview();
     };
-  }, [clearPreview]);
+  }, []);
 
   return (
     <form

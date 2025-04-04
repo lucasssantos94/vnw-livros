@@ -5,19 +5,19 @@
     width: 100%;
     max-width: 44.2rem;
     height: 50rem;
-    border: 3px solid global.$brand-color;
+    border: 0.3rem solid global.$brand-color;
     border-radius: 2rem;
     padding: 2rem;
 
     @include global.media-query(1700px) {
         &:has(.image-preview) {
-            height: 90rem;
+            min-height: 90rem;
         }
     }
 
     @include global.media-query(sm) {
         &:has(.image-preview) {
-            height: 85rem;
+            min-height: 85rem;
         }
     }
 
@@ -69,8 +69,8 @@
 
     .upload-options {
         display: flex;
-        gap: 12px;
-        margin-bottom: 16px;
+        gap: 1.2rem;
+        margin-bottom: 1.6rem;
 
         .option-button {
             flex: 1;
@@ -118,7 +118,7 @@
 
     .file-input-wrapper {
         position: relative;
-        margin-bottom: 8px;
+        margin-bottom: 0.8rem;
 
         .file-input {
             position: absolute;
@@ -128,9 +128,9 @@
 
         .custom-file-input {
             display: block;
-            padding: 12px 16px;
+            padding: 1.2rem 1.6rem;
             border: 2px dashed rgba(global.$brand-color, 0.4);
-            border-radius: 6px;
+            border-radius: 0.6rem;
             background: rgba(global.$brand-color, 0.05);
             text-align: center;
             cursor: pointer;
@@ -156,7 +156,7 @@
     }
 
     .image-preview {
-        width: 250px;
+        width: 25rem;
         min-height: 40rem;
         display: flex;
         flex-direction: column;
@@ -171,24 +171,24 @@
 
         img {
             max-width: 100%;
-            min-height: 300px;
+            min-height: 30rem;
 
-            border-radius: 5px;
+            border-radius: 0.5rem;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         }
 
         @include global.media-query(sm) {
-            width: 200px;
+            width: 20rem;
 
         }
 
     }
 
     input[type="submit"] {
-        border-radius: 10px;
+        border-radius: 1rem;
         background: #005695;
-        width: 195px;
-        height: 53px;
+        width: 19.5rem;
+        height: 5.3rem;
         border: none;
         color: global.$light-color;
         font-size: 2rem;

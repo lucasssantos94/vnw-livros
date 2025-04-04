@@ -16,7 +16,7 @@ export const useImagePreview = () => {
       toast.error("O arquivo deve ter no máximo 2MB", {
         autoClose: false,
       });
-      setImagepreview(null);
+
       scrollToTop();
       return;
     }
@@ -35,7 +35,6 @@ export const useImagePreview = () => {
       URL.revokeObjectURL(file);
       setFile(null);
       setImagepreview(null);
-      console.log("limpou");
     }
   }, [file]);
 
