@@ -4,8 +4,9 @@ import App from "./App";
 import HomePage from "./pages/Home";
 import SearchPage from "./pages/Search";
 import BooksPage from "./pages/Books";
-import RegisterPage from "./pages/Register";
+import DonatePage from "./pages/Donate";
 import NotFoundPage from "./pages/NotFound";
+import SignUpPage from "./pages/SignUp";
 
 export const router = createBrowserRouter(
   [
@@ -16,7 +17,8 @@ export const router = createBrowserRouter(
         { path: "/", element: <HomePage /> },
         { path: "/livros", element: <BooksPage /> },
         { path: "/livros/:title", element: <SearchPage /> },
-        { path: "/doar", element: <RegisterPage /> },
+        { path: "/doar", element: <DonatePage /> },
+        { path: "/cadastro", element: <SignUpPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

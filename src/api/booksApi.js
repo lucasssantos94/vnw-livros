@@ -4,7 +4,7 @@ const baseUrlApi = import.meta.env.VITE_API_URL;
 
 export const bookApiServices = {
   getAll: async () => {
-    const response = await axios.get(`${baseUrlApi}/livros`);
+    const response = await axios.get(`${baseUrlApi}/books`);
     return response.data;
   },
   donateBook: async (bookData) => {
