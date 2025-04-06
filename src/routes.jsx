@@ -7,6 +7,7 @@ import BooksPage from "./pages/Books";
 import DonatePage from "./pages/Donate";
 import NotFoundPage from "./pages/NotFound";
 import SignUpPage from "./pages/SignUp";
+import SignInPage from "./pages/SignIn";
 
 export const router = createBrowserRouter(
   [
@@ -19,6 +20,7 @@ export const router = createBrowserRouter(
         { path: "/livros/:title", element: <SearchPage /> },
         { path: "/doar", element: <DonatePage /> },
         { path: "/cadastro", element: <SignUpPage /> },
+        { path: "/login", element: <SignInPage /> },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

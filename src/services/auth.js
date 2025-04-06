@@ -17,13 +17,14 @@ export const authApiServices = {
     }
   },
 
-  login: async (email, password) => {
+  login: async ({ email, password }) => {
     const response = await api.post(`/auth/login`, {
       email,
       password,
     });
-    const token = response.data.acess_token;
-    localStorage.setItem("token", token);
+    const token = response.data;
+    localStorage.setItem("token", token.access_token);
+
     return response.data;
   },
 

@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
 import { authApiServices } from "../../services/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -21,7 +23,14 @@ const SignUpPage = () => {
   };
 
   const onSubmit = async (data) => {
-    await authApiServices.register(data, clearForm);
+    try {
+      await authApiServices.register(data, clearForm);
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const password = watch("password");
