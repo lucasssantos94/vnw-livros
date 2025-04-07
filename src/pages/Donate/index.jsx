@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./style.module.scss";
 
-const RegisterPage = () => {
+const DonationPage = () => {
   const { token } = useAuth();
   const [isToken, setIsToken] = useState(token);
 
@@ -19,8 +19,6 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (isToken) {
-      // Se o token foi definido, forçamos o redirecionamento para a mesma rota
-      // Isso força o React Router a reprocessar o componente com o novo estado
       setIsToken(token);
       navigate("/doar", { replace: true });
     }
@@ -48,4 +46,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default DonationPage;

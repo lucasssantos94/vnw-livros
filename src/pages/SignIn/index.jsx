@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { authApiServices } from "../../services/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useAuth } from "../../hooks/useAuth";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
 const SignInPage = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,10 +23,14 @@ const SignInPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      await authApiServices.login(data);
+      const response = await authApiServices.login(data);
+      const token = response.access_token;
+      console.log(token);
+      login(token);
       navigate(location.state?.from || "/doar");
     } catch (error) {
       console.log(error);
+      toast.error(error.response?.data?.error || "Erro ao logar");
     }
   };
 

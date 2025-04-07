@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { authApiServices } from "../../services/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
 const ModalLogin = () => {
+  const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -20,7 +22,9 @@ const ModalLogin = () => {
 
   const onSubmit = async (data) => {
     try {
-      await authApiServices.login(data);
+      const response = await authApiServices.login(data);
+      const token = response.access_token;
+      login(token);
       navigate(location.state?.from || "/doar");
     } catch (error) {
       console.log(error);

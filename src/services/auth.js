@@ -1,30 +1,19 @@
 import api from "./api";
-import { toast } from "react-toastify";
 
 export const authApiServices = {
-  register: async ({ email, password, nickname }, clearForm) => {
-    try {
-      const response = await api.post(`/auth/register`, {
-        email,
-        password,
-        nickname,
-      });
-      toast.success("Conta criada com sucesso!");
-      clearForm();
-      return response.data;
-    } catch (error) {
-      toast.error(error.response.data.error);
-    }
+  register: async ({ email, password, nickname }) => {
+    const response = await api.post(`/auth/register`, {
+      email,
+      password,
+      nickname,
+    });
+    return response.data;
   },
-
   login: async ({ email, password }) => {
     const response = await api.post(`/auth/login`, {
       email,
       password,
     });
-    const token = response.data;
-    localStorage.setItem("token", token.access_token);
-
     return response.data;
   },
 

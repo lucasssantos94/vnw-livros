@@ -4,11 +4,16 @@ import styles from "./styles.module.scss";
 import { authApiServices } from "../../services/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const redictLogin = () => {
+    navigate("/login");
+  };
 
   const {
     register,
@@ -24,12 +29,15 @@ const SignUpPage = () => {
 
   const onSubmit = async (data) => {
     try {
-      await authApiServices.register(data, clearForm);
+      await authApiServices.register(data);
+      toast.success("Conta criada com sucesso!", { autoClose: 2000 });
+      clearForm();
       setTimeout(() => {
-        navigate("/login");
+        redictLogin();
       }, 2000);
     } catch (error) {
-      console.log(error);
+      toast.error(error.response?.data?.error || "Erro ao registrar");
+      console.error("Erro ao registrar:", error);
     }
   };
 
