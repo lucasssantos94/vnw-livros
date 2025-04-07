@@ -8,11 +8,11 @@ export const bookApiServices = {
     return response.data;
   },
   donateBook: async (bookData) => {
-    const response = await axios.post(`${baseUrlApi}/doar`, bookData);
+    const response = await axios.post(`${baseUrlApi}/books`, bookData);
     return response.data;
   },
   searchBook: async (title) => {
-    const response = await axios.get(`${baseUrlApi}/livros/${title}`);
+    const response = await axios.get(`${baseUrlApi}/books/${title}`);
     return response.data;
   },
 };

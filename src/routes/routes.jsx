@@ -1,13 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import App from "./App";
-import HomePage from "./pages/Home";
-import SearchPage from "./pages/Search";
-import BooksPage from "./pages/Books";
-import DonatePage from "./pages/Donate";
-import NotFoundPage from "./pages/NotFound";
-import SignUpPage from "./pages/SignUp";
-import SignInPage from "./pages/SignIn";
+import App from "../App";
+import HomePage from "../pages/Home";
+import SearchPage from "../pages/Search";
+import BooksPage from "../pages/Books";
+import DonatePage from "../pages/Donate";
+import NotFoundPage from "../pages/NotFound";
+import SignUpPage from "../pages/SignUp";
+import SignInPage from "../pages/SignIn";
+import DashboardPage from "../pages/Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter(
   [
@@ -21,6 +23,14 @@ export const router = createBrowserRouter(
         { path: "/doar", element: <DonatePage /> },
         { path: "/cadastro", element: <SignUpPage /> },
         { path: "/login", element: <SignInPage /> },
+        {
+          path: "/dashboard",
+          element: (
+            <PrivateRoute>
+              <DashboardPage />
+            </PrivateRoute>
+          ),
+        },
         { path: "*", element: <NotFoundPage /> },
       ],
     },

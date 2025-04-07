@@ -15,9 +15,10 @@ import iconImage from "@assets/images/icons/icon-image.svg";
 
 import styles from "./style.module.scss";
 import { toast } from "react-toastify";
+import booksApiServices from "../../services/books";
 
 const FormAddBook = () => {
-  const { isSending, handleDonateBook } = useDonateBook();
+  const { isSending } = useDonateBook();
   const {
     imagePreview,
     handleUrlPreview,
@@ -42,35 +43,46 @@ const FormAddBook = () => {
   const datalistRef = useRef(null);
 
   const onSubmit = async (data) => {
-    let uploadedImageUrl = data.urlImage;
+    let uploadedImageUrl = data.image_url;
 
-    if (data.fileImage[0].size > 2 * 1024 * 1024) {
-      toast.error("O arquivo deve ter no máximo 2MB", {
-        autoClose: false,
-      });
-      scrollToTop();
-      return;
-    }
+    // Se for upload via arquivo
+    if (uploadImageOption === "file") {
+      if (data.fileImage && data.fileImage[0]) {
+        const file = data.fileImage[0];
 
-    if (uploadImageOption === "file" && data.fileImage[0]) {
-      uploadedImageUrl = await uploadImage(data.fileImage[0]);
-      if (!uploadedImageUrl) return;
+        if (file.size > 2 * 1024 * 1024) {
+          toast.error("O arquivo deve ter no máximo 2MB", {
+            autoClose: false,
+          });
+          scrollToTop();
+          return;
+        }
+
+        uploadedImageUrl = await uploadImage(file);
+        if (!uploadedImageUrl) return;
+      } else {
+        toast.error("Por favor, selecione um arquivo de imagem.");
+        return;
+      }
     }
 
     const bookData = {
       ...data,
-      urlImage: uploadedImageUrl,
+      image_url: uploadedImageUrl,
     };
 
-    handleDonateBook(bookData, () => {
+    try {
+      await booksApiServices.donate(bookData);
+      toast.success("Livro cadastrado com sucesso!");
       reset();
-      if (datalistRef.current) {
-        datalistRef.current.reset();
-      }
+      if (datalistRef.current) datalistRef.current.reset();
       setImagepreview(null);
       setFileName("");
       scrollToTop();
-    });
+    } catch (err) {
+      toast.error("Erro ao cadastrar o livro. Verifique os dados.");
+      console.error(err);
+    }
   };
 
   useEffect(() => {
@@ -198,9 +210,9 @@ const FormAddBook = () => {
           <>
             <input
               type="url"
-              name="urlImage"
+              name="image_url"
               placeholder="Link da Imagem (ex: https://exemplo.com/imagem.jpg)"
-              {...register("urlImage", {
+              {...register("image_url", {
                 required: { value: true, message: "Campo obrigatório" },
                 pattern: {
                   value:
@@ -212,9 +224,9 @@ const FormAddBook = () => {
                 handleUrlPreview(e.target.value);
               }}
             />
-            {errors.urlImage && (
+            {errors.image_url && (
               <span className={styles["error-message"]}>
-                {errors.urlImage.message}
+                {errors.image_url.message}
               </span>
             )}
           </>
