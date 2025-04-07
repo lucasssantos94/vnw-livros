@@ -9,9 +9,13 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
 const SignInPage = () => {
-  const { login } = useAuth();
+  const { login, token } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+
+  if (token) {
+    navigate(location.state?.from || "/");
+  }
 
   const {
     register,
