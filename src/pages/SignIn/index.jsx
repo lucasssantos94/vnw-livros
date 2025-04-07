@@ -29,7 +29,6 @@ const SignInPage = () => {
     try {
       const response = await authApiServices.login(data);
       const token = response.access_token;
-      console.log(token);
       login(token);
       navigate(location.state?.from || "/doar");
     } catch (error) {

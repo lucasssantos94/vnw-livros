@@ -8,7 +8,7 @@ import DonatePage from "../pages/Donate";
 import NotFoundPage from "../pages/NotFound";
 import SignUpPage from "../pages/SignUp";
 import SignInPage from "../pages/SignIn";
-import DashboardPage from "../pages/Dashboard";
+import DashboardPage from "../pages/Dashboard/admin";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter(

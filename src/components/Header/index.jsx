@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Container from "@components/Container";
 import FormSearch from "@components/FormSearch";
+import UserMenu from "@components/UserMenu";
 
 import Logo from "@assets/images/icons/logo.png";
 import NavLinks from "@components/NavLinks";
@@ -39,6 +40,7 @@ const Header = () => {
             <NavLinks />
 
             <FormSearch />
+            <UserMenu />
           </>
         )}
       </Container>
