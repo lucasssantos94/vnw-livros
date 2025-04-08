@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { bookApiServices } from "../api/booksApi";
+import booksApiServices from "@services/books";
 
 export const useBooks = () => {
   const [books, setBooks] = useState([]);
@@ -11,7 +11,7 @@ export const useBooks = () => {
     setError(null);
 
     try {
-      const data = await bookApiServices.getAll(signal);
+      const data = await booksApiServices.getAll(signal);
       setBooks(data);
     } catch (error) {
       if (!signal?.aborted) {

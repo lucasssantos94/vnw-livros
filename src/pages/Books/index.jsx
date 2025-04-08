@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useBooks } from "@hooks/useBook";
+import { useBooks } from "@hooks/useGetBooks";
 import Container from "@components/Container";
 import Book from "@components/Book";
 import BookLoader from "@components/BookLoading";

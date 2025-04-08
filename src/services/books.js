@@ -12,7 +12,7 @@ const booksApiServices = {
       throw error;
     }
   },
-  search: async (title) => {
+  searchBook: async (title) => {
     try {
       const response = await api.get(`${baseUrlApi}/books/${title}`);
       return response.data;

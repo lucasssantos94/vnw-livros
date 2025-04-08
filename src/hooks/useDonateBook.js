@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { bookApiServices } from "../api/booksApi";
+import bookApiServices from "@services/books";
 import { toast } from "react-toastify";
 
 export const useDonateBook = () => {
@@ -9,14 +9,8 @@ export const useDonateBook = () => {
   const handleDonateBook = async (bookData, onSucess) => {
     setIsSending(true);
     setError(null);
-
     try {
-      await bookApiServices.donateBook({
-        titulo: bookData.title,
-        categoria: bookData.category,
-        autor: bookData.author,
-        imagem_url: bookData.urlImage,
-      });
+      await bookApiServices.donate(bookData);
 
       toast.success("Livro cadastrado, Obrigado pela doação", {
         autoClose: 3000,

@@ -15,10 +15,10 @@ import iconImage from "@assets/images/icons/icon-image.svg";
 
 import styles from "./style.module.scss";
 import { toast } from "react-toastify";
-import booksApiServices from "@services/books";
+// import booksApiServices from "@services/books";
 
 const FormAddBook = () => {
-  const { isSending } = useDonateBook();
+  const { isSending, handleDonateBook } = useDonateBook();
   const {
     imagePreview,
     handleUrlPreview,
@@ -45,7 +45,6 @@ const FormAddBook = () => {
   const onSubmit = async (data) => {
     let uploadedImageUrl = data.image_url;
 
-    // Se for upload via arquivo
     if (uploadImageOption === "file") {
       if (data.fileImage && data.fileImage[0]) {
         const file = data.fileImage[0];
@@ -72,15 +71,13 @@ const FormAddBook = () => {
     };
 
     try {
-      await booksApiServices.donate(bookData);
-      toast.success("Livro cadastrado com sucesso!");
+      await handleDonateBook(bookData);
       reset();
       if (datalistRef.current) datalistRef.current.reset();
       setImagepreview(null);
       setFileName("");
       scrollToTop();
     } catch (err) {
-      toast.error("Erro ao cadastrar o livro. Verifique os dados.");
       console.error(err);
     }
   };

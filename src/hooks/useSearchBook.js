@@ -1,4 +1,4 @@
-import { bookApiServices } from "../api/booksApi";
+import booksApiServices from "@services/books";
 import { useState, useCallback } from "react";
 
 export const useSearchBook = () => {
@@ -10,7 +10,7 @@ export const useSearchBook = () => {
     setIsLoading(true);
     setSearchedBooks([]);
     try {
-      const data = await bookApiServices.searchBook(title);
+      const data = await booksApiServices.searchBook(title);
       setSearchedBooks(data.length > 0 ? data : []);
     } catch (error) {
       setError(error.message || "Erro ao buscar livro.");
