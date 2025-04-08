@@ -27,7 +27,7 @@ const DonationPage = () => {
   return (
     <section className={styles["s-register"]}>
       <Container>
-        <ToastContainer className={styles["toastify"]} />
+        <ToastContainer className="toastify" />
         {token ? (
           <>
             <h2 className={styles["title-section"]}>

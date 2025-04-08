@@ -4,6 +4,8 @@ import styles from "./styles.module.scss";
 import { authApiServices } from "../../services/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 
 const SignUpPage = () => {
@@ -45,6 +47,7 @@ const SignUpPage = () => {
 
   return (
     <div className={`${styles.signUpContainer} `}>
+      <ToastContainer className="toastify" />
       <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
         <h1 className={styles.title}>Criar Conta</h1>
 
