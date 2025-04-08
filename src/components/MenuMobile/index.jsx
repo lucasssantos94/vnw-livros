@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import NavLinks from "@components/NavLinks";
 import FormSearch from "@components/FormSearch";
+import UserMenu from "@components/UserMenu";
 
 import styles from "./styles.module.scss";
 
@@ -44,6 +45,7 @@ const MenuMobile = () => {
         ref={menuRef}
         className={`${styles["menu-mobile"]} ${isOpen ? styles.open : ""}`}
       >
+        <UserMenu closeMenu={closeMenu} />
         <FormSearch className={styles.formSearch} closeMenu={closeMenu} />
         <NavLinks closeMenu={closeMenu} />
       </div>

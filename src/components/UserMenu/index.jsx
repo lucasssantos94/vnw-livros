@@ -1,19 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import PropTypes from "prop-types";
 
 import { Link, useNavigate } from "react-router-dom";
 import avatar from "@assets/images/icons/avatar.png";
 
 import styles from "./styles.module.scss";
 
-const UserMenu = () => {
+const UserMenu = ({ closeMenu }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  // console.log(user);
-
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+
+  const handleToggleDropdown = () => {
+    setIsOpen(!isOpen);
+    if (closeMenu) {
+      closeMenu();
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -24,7 +30,6 @@ const UserMenu = () => {
     }
   };
 
-  // Fechar o dropdown quando clicar fora
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -61,21 +66,21 @@ const UserMenu = () => {
             <Link
               to="/dashboard"
               className={styles["dropdown-item"]}
-              onClick={() => setIsOpen(false)}
+              onClick={handleToggleDropdown}
             >
               Dashboard
             </Link>
             <Link
               to="/profile"
               className={styles["dropdown-item"]}
-              onClick={() => setIsOpen(false)}
+              onClick={handleToggleDropdown}
             >
               Meu Perfil
             </Link>
             <button
               onClick={() => {
                 handleLogout();
-                setIsOpen(false);
+                handleToggleDropdown();
               }}
               className={`${styles["dropdown-item"]} ${styles["logout"]}`}
             >
@@ -84,12 +89,20 @@ const UserMenu = () => {
           </div>
         </div>
       ) : (
-        <Link to="/login" className={styles["login-button"]}>
+        <Link
+          to="/login"
+          className={styles["login-button"]}
+          onClick={closeMenu}
+        >
           Entrar
         </Link>
       )}
     </div>
   );
+};
+
+UserMenu.propTypes = {
+  closeMenu: PropTypes.func,
 };
 
 export default UserMenu;

@@ -6,8 +6,8 @@
     .login-button {
         padding: 8px 16px;
         background-color: global.$brand-color;
-        border: 2px solid #fff;
-        color: white;
+        border: 2px solid global.$light-color;
+        color: global.$light-color;
         border-radius: 4px;
         text-decoration: none;
         font-weight: bold;
@@ -21,9 +21,11 @@
         position: relative;
 
         .user-info {
+            max-width: 150px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            flex-direction: column;
+            gap: 4px;
             cursor: pointer;
             padding: 4px 8px;
             border-radius: 4px;
@@ -34,15 +36,20 @@
             }
 
             .user-avatar {
-                width: 32px;
-                height: 32px;
+                width: 40px;
+                height: 40px;
                 border-radius: 50%;
                 object-fit: cover;
             }
 
             .username {
                 font-weight: 500;
-                color: #fff;
+                color: global.$light-color;
+                font-size: 1.4rem;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
             }
         }
 
@@ -51,7 +58,7 @@
             position: absolute;
             top: 100%;
             right: 0;
-            background-color: white;
+            background-color: global.$light-color;
             min-width: 160px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 4px;
@@ -59,6 +66,11 @@
             padding: 8px 0;
             margin-top: 8px;
             animation: fadeIn 0.2s ease-in-out;
+
+            @include global.media-query(sm) {
+                right: auto;
+                left: 0;
+            }
 
             &.open {
                 display: block;
@@ -68,13 +80,13 @@
                 display: block;
                 padding: 8px 16px;
                 text-decoration: none;
-                color: #000;
+                color: global.$dark-color;
                 transition: background-color 0.2s;
                 font-size: 1.4rem;
 
                 &:hover {
                     background-color: color.adjust(global.$brand-color, $lightness: 10%, $space: hsl);
-                    color: #fff;
+                    color: global.$light-color;
                 }
 
                 &.logout {
@@ -89,7 +101,7 @@
 
                     &:hover {
                         background-color: color.adjust(global.$error-color, $lightness: 10%, $space: hsl);
-                        color: #fff;
+                        color: global.$light-color;
                     }
                 }
             }

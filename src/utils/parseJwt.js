@@ -14,7 +14,7 @@ export const parseJwt = (token) => {
     const decoded = JSON.parse(jsonPayload);
     return {
       id: decoded.sub, // Usando o sub como ID
-      is_admin: decoded.isAdmin || false, // Padronizando para is_admin
+      is_admin: decoded["is_admin"],
       // Campos padrão para evitar erros
       nickname: decoded.nickname || `user_${decoded.sub.slice(0, 8)}`,
       avatar_url: decoded.avatar_url || null,
