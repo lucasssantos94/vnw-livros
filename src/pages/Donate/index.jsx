@@ -6,9 +6,6 @@ import ModalLogin from "@components/ModalLogin";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import styles from "./style.module.scss";
 
 const DonationPage = () => {
@@ -27,17 +24,22 @@ const DonationPage = () => {
   return (
     <section className={styles["s-register"]}>
       <Container>
-        <ToastContainer className="toastify" />
         {token ? (
           <>
             <h2 className={styles["title-section"]}>
               Por favor, preencha o formulário com as informações do Livro
             </h2>
+
             <FormAddBook />
           </>
         ) : (
           <>
             <h2 className={styles["title-section"]}>Faça login para doar</h2>
+
+            <p className={styles["phrase"]}>
+              “Livros doados podem ser uma fonte de conforto e entretenimento em
+              tempos difíceis.”
+            </p>
             <ModalLogin />
           </>
         )}

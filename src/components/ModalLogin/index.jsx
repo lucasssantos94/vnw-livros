@@ -35,7 +35,7 @@ const ModalLogin = () => {
     <div className={styles["modal-container"]}>
       <div className={styles.loginContainer}>
         <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-          <h1 className={styles.title}>Login</h1>
+          <h2 className={styles.title}>Login</h2>
 
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.label}>

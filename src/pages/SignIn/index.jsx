@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { authApiServices } from "../../services/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -12,10 +12,6 @@ const SignInPage = () => {
   const { login, token } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-
-  if (token) {
-    navigate(location.state?.from || "/");
-  }
 
   const {
     register,
@@ -36,6 +32,12 @@ const SignInPage = () => {
       toast.error(error.response?.data?.error || "Erro ao logar");
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      navigate(location.state?.from || "/");
+    }
+  }, [token, navigate, location]);
 
   return (
     <div className={styles.loginContainer}>
