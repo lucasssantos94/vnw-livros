@@ -1,11 +1,9 @@
 import api from "./api";
 
-const baseUrlApi = import.meta.env.VITE_API_URL;
-
 const booksApiServices = {
   getAll: async () => {
     try {
-      const response = await api.get(`${baseUrlApi}/books`);
+      const response = await api.get(`books/`);
       return response.data;
     } catch (error) {
       console.log("Erro ao buscar livros:", error);
@@ -14,7 +12,7 @@ const booksApiServices = {
   },
   searchBook: async (title) => {
     try {
-      const response = await api.get(`${baseUrlApi}/books/${title}`);
+      const response = await api.get(`books/${title}`);
       return response.data;
     } catch (error) {
       console.log("Erro ao buscar livro:", error);
@@ -24,7 +22,7 @@ const booksApiServices = {
 
   donate: async (data) => {
     try {
-      const response = await api.post(`${baseUrlApi}/books/`, data);
+      const response = await api.post(`books/`, data);
       return response.data;
     } catch (error) {
       console.log("Erro ao cadastrar livro:", error);

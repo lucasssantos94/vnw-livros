@@ -1,28 +1,24 @@
 import { useState, useCallback } from "react";
 import booksApiServices from "@services/books";
+import { toast } from "react-toastify";
 
 export const useBooks = () => {
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getBooks = useCallback(async (signal) => {
-    setIsLoading(true);
-    setError(null);
-
+  const getBooks = useCallback(async () => {
     try {
-      const data = await booksApiServices.getAll(signal);
-      setBooks(data);
+      setIsLoading(true);
+      setError(null);
+      const response = await booksApiServices.getAll();
+      setBooks(response);
     } catch (error) {
-      if (!signal?.aborted) {
-        setError(error);
-      }
+      const errorMsg = error.message || "Erro ao buscar livros.";
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
-      if (!signal?.aborted) {
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 1000);
-      }
+      setIsLoading(false);
     }
   }, []);
 

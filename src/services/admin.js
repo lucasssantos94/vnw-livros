@@ -1,11 +1,9 @@
 import api from "./api";
 
-const baseUrlApi = import.meta.env.VITE_API_URL;
-
 export const adminApiServices = {
   getUsers: async () => {
     try {
-      const response = await api.get(`${baseUrlApi}/admin/users`);
+      const response = await api.get(`admin/users`);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -13,7 +11,7 @@ export const adminApiServices = {
   },
   getBooks: async () => {
     try {
-      const response = await api.get(`${baseUrlApi}/admin/books`);
+      const response = await api.get(`admin/books`);
       return response.data;
     } catch (error) {
       console.log(error);

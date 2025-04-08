@@ -6,19 +6,17 @@ import BookLoader from "@components/BookLoading";
 import style from "./style.module.scss";
 
 const BooksPage = () => {
-  const { books, isLoading, error, getBooks } = useBooks();
+  const { books, isLoading, getBooks } = useBooks();
 
   useEffect(() => {
     const controller = new AbortController();
 
     getBooks(controller.signal);
 
-    if (error) {
-      console.error(error);
-    }
-
-    return () => controller.abort();
-  }, [getBooks, error]);
+    return () => {
+      controller.abort();
+    };
+  }, [getBooks]);
 
   return (
     <section className={style["s-books"]}>
