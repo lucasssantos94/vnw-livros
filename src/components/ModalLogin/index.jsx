@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { authApiServices } from "../../services/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
+import { authApiServices } from "@services/auth";
+import { useAuth } from "@hooks/useAuth";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "./styles.module.scss";
@@ -33,19 +33,22 @@ const ModalLogin = () => {
 
   return (
     <div className={styles["modal-container"]}>
-      <div className={styles.loginContainer}>
-        <form className={styles.loginForm} onSubmit={handleSubmit(onSubmit)}>
-          <h2 className={styles.title}>Login</h2>
+      <div className={styles["login-container"]}>
+        <form
+          className={styles["login-form"]}
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h2 className={styles["title"]}>Login</h2>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="email" className={styles.label}>
+          <div className={styles["form-group"]}>
+            <label htmlFor="email" className={styles["label"]}>
               E-mail
             </label>
             <input
               id="email"
               type="email"
               placeholder="seu@email.com"
-              className={styles.input}
+              className={styles["input"]}
               {...register("email", {
                 required: "E-mail é obrigatório",
                 pattern: {
@@ -55,29 +58,29 @@ const ModalLogin = () => {
               })}
             />
             {errors.email && (
-              <span className={styles.errorMessage}>
+              <span className={styles["error-message"]}>
                 {errors.email.message}
               </span>
             )}
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="password" className={styles.label}>
+          <div className={styles["form-group"]}>
+            <label htmlFor="password" className={styles["label"]}>
               Senha
             </label>
-            <div className={styles.passwordInputContainer}>
+            <div className={styles["password-input-container"]}>
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Sua senha"
-                className={styles.input}
+                className={styles["input"]}
                 {...register("password", {
                   required: "Senha é obrigatória",
                 })}
               />
               <button
                 type="button"
-                className={styles.togglePasswordButton}
+                className={styles["toggle-password-button"]}
                 onClick={() => setShowPassword(!showPassword)}
                 aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
               >
@@ -85,7 +88,7 @@ const ModalLogin = () => {
               </button>
             </div>
             {errors.password && (
-              <span className={styles.errorMessage}>
+              <span className={styles["error-message"]}>
                 {errors.password.message}
               </span>
             )}
@@ -93,13 +96,13 @@ const ModalLogin = () => {
 
           <button
             type="submit"
-            className={styles.submitButton}
+            className={styles["submit-button"]}
             disabled={isSubmitting}
           >
             {isSubmitting ? "Entrando..." : "Entrar"}
           </button>
 
-          <div className={styles.registerLink}>
+          <div className={styles["register-link"]}>
             <span>Não tem uma conta? </span>
             <Link to="/cadastro">Cadastre-se</Link>
           </div>

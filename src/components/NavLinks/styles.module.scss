@@ -1,5 +1,5 @@
 .menu {
-    @include global.flex($align: center, $gap: 4.3rem);
+    @include global.flex($align: center, $gap: 3rem);
 
     a {
         color: global.$light-color;

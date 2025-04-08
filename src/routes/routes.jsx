@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import App from "../App";
-import HomePage from "../pages/Home";
-import SearchPage from "../pages/Search";
-import BooksPage from "../pages/Books";
-import DonatePage from "../pages/Donate";
-import NotFoundPage from "../pages/NotFound";
-import SignUpPage from "../pages/SignUp";
-import SignInPage from "../pages/SignIn";
-import DashboardPage from "../pages/Dashboard/admin";
+import HomePage from "@pages/Home";
+import SearchPage from "@pages/Search";
+import BooksPage from "@pages/Books";
+import DonatePage from "@pages/Donate";
+import NotFoundPage from "@pages/NotFound";
+import SignUpPage from "@pages/SignUp";
+import SignInPage from "@pages/SignIn";
+import DashboardPage from "@pages/Dashboard/admin";
 import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter(

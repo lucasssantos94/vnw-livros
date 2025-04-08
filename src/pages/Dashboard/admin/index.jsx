@@ -1,6 +1,6 @@
 // AdminDashboard.jsx
 import { useState, useEffect } from "react";
-import { adminApiServices } from "../../../services/admin";
+import { adminApiServices } from "@services/admin";
 import Book from "@components/Book";
 import "./styles.scss";
 

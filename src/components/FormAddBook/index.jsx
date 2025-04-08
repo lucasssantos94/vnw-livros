@@ -7,7 +7,7 @@ import useUploadImage from "@hooks/useUploadImage";
 
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
-import scrollToTop from "../../utils/scrollToTop";
+import scrollToTop from "@utils/scrollToTop";
 
 import iconForm from "@assets/images/icons/icon-form.png";
 import iconUrl from "@assets/images/icons/icon-url.svg";
@@ -15,7 +15,7 @@ import iconImage from "@assets/images/icons/icon-image.svg";
 
 import styles from "./style.module.scss";
 import { toast } from "react-toastify";
-import booksApiServices from "../../services/books";
+import booksApiServices from "@services/books";
 
 const FormAddBook = () => {
   const { isSending } = useDonateBook();

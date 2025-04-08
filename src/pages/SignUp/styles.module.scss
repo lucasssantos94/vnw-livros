@@ -1,13 +1,13 @@
 @use 'sass:color';
 
-.signUpContainer {
+.sign-up-container {
     @include global.flex($direction: column, $align: center, $justify: center);
     min-height: 70vh;
     background-color: global.$light-color;
     padding: 2rem;
 }
 
-.signUpForm {
+.sign-up-form {
     width: 100%;
     max-width: 400px;
     padding: 2rem;
@@ -22,7 +22,7 @@
         margin-bottom: 2rem;
     }
 
-    .formGroup {
+    .form-group {
         margin-bottom: 1.5rem;
     }
 
@@ -49,7 +49,7 @@
         }
     }
 
-    .passwordInputContainer {
+    .password-input-container {
         position: relative;
         display: flex;
         align-items: center;
@@ -59,7 +59,7 @@
             width: 100%;
         }
 
-        .togglePasswordButton {
+        .toggle-password-button {
             position: absolute;
             right: 10px;
             background: none;
@@ -84,14 +84,14 @@
         }
     }
 
-    .errorMessage {
+    .error-message {
         display: block;
         margin-top: 0.5rem;
         color: global.$error-color;
         font-size: 1.4rem;
     }
 
-    .submitButton {
+    .submit-button {
         border-radius: 1rem;
         background: #005695;
         width: 100%;

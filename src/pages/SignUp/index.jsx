@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styles from "./styles.module.scss";
-import { authApiServices } from "../../services/auth";
+import { authApiServices } from "@services/auth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -45,19 +45,22 @@ const SignUpPage = () => {
   const password = watch("password");
 
   return (
-    <div className={`${styles.signUpContainer} `}>
-      <form className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
-        <h1 className={styles.title}>Criar Conta</h1>
+    <div className={`${styles["sign-up-container"]} `}>
+      <form
+        className={styles["sign-up-form"]}
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h1 className={styles["title"]}>Criar Conta</h1>
 
-        <div className={styles.formGroup}>
-          <label htmlFor="email" className={styles.label}>
+        <div className={styles["form-group"]}>
+          <label htmlFor="email" className={styles["label"]}>
             E-mail
           </label>
           <input
             id="email"
             type="email"
             placeholder="seu@email.com"
-            className={styles.input}
+            className={styles["input"]}
             {...register("email", {
               required: "E-mail é obrigatório",
               pattern: {
@@ -67,19 +70,21 @@ const SignUpPage = () => {
             })}
           />
           {errors.email && (
-            <span className={styles.errorMessage}>{errors.email.message}</span>
+            <span className={styles["erroe-message"]}>
+              {errors.email.message}
+            </span>
           )}
         </div>
 
-        <div className={styles.formGroup}>
-          <label htmlFor="nickname" className={styles.label}>
+        <div className={styles["form-group"]}>
+          <label htmlFor="nickname" className={styles["label"]}>
             Nickname
           </label>
           <input
             id="nickname"
             type="text"
             placeholder="Seu apelido"
-            className={styles.input}
+            className={styles["input"]}
             {...register("nickname", {
               required: "Nickname é obrigatório",
               minLength: {
@@ -89,22 +94,22 @@ const SignUpPage = () => {
             })}
           />
           {errors.nickname && (
-            <span className={styles.errorMessage}>
+            <span className={styles["error-message"]}>
               {errors.nickname.message}
             </span>
           )}
         </div>
 
-        <div className={styles.formGroup}>
-          <label htmlFor="password" className={styles.label}>
+        <div className={styles["form-group"]}>
+          <label htmlFor="password" className={styles["label"]}>
             Senha
           </label>
-          <div className={styles.passwordInputContainer}>
+          <div className={styles["password-input-container"]}>
             <input
               id="password"
               type={showPassword ? "text" : "password"}
               placeholder="Sua senha"
-              className={styles.input}
+              className={styles["input"]}
               {...register("password", {
                 required: "Senha é obrigatória",
                 minLength: {
@@ -116,29 +121,29 @@ const SignUpPage = () => {
             <button
               type="button"
               aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-              className={styles.togglePasswordButton}
+              className={styles["toggle-password-button"]}
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           {errors.password && (
-            <span className={styles.errorMessage}>
+            <span className={styles["error-message"]}>
               {errors.password.message}
             </span>
           )}
         </div>
 
-        <div className={styles.formGroup}>
-          <label htmlFor="confirmPassword" className={styles.label}>
+        <div className={styles["form-group"]}>
+          <label htmlFor="confirmPassword" className={styles["label"]}>
             Confirmar Senha
           </label>
-          <div className={styles.passwordInputContainer}>
+          <div className={styles["password-input-container"]}>
             <input
               id="confirmPassword"
               type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirme sua senha"
-              className={styles.input}
+              className={styles["input"]}
               {...register("confirmPassword", {
                 required: "Confirmação de senha é obrigatória",
                 validate: (value) =>
@@ -147,14 +152,14 @@ const SignUpPage = () => {
             />
             <button
               type="button"
-              className={styles.togglePasswordButton}
+              className={styles["toggle-password-button"]}
               onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
             </button>
           </div>
           {errors.confirmPassword && (
-            <span className={styles.errorMessage}>
+            <span className={styles["error-message"]}>
               {errors.confirmPassword.message}
             </span>
           )}
@@ -162,7 +167,7 @@ const SignUpPage = () => {
 
         <button
           type="submit"
-          className={styles.submitButton}
+          className={styles["submit-button"]}
           disabled={isSubmitting}
         >
           {isSubmitting ? "Cadastrando..." : "Cadastrar"}

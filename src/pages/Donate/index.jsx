@@ -1,6 +1,6 @@
 import Container from "@components/Container";
 import FormAddBook from "@components/FormAddBook";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "@hooks/useAuth";
 import ModalLogin from "@components/ModalLogin";
 
 import { useEffect, useState } from "react";
