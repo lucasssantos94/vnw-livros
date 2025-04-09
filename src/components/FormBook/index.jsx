@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { useRef, useEffect, useState } from "react";
 import { useDonateBook } from "@hooks/useDonateBook";
 import { useImagePreview } from "@hooks/useImagePreview";
+import { useEditBook } from "@hooks/useEditBook";
 import useUploadImage from "@hooks/useUploadImage";
+import PropTypes from "prop-types";
 
 import CustomDatalist from "@components/Datalist";
 import categoriesBooks from "@constants/categoriesBooks";
@@ -15,10 +17,10 @@ import iconImage from "@assets/images/icons/icon-image.svg";
 
 import styles from "./style.module.scss";
 import { toast } from "react-toastify";
-// import booksApiServices from "@services/books";
 
-const FormAddBook = () => {
+const FormBook = ({ isEditing, book, setModal, onEditSuccess }) => {
   const { isSending, handleDonateBook } = useDonateBook();
+  const { isSaving, handleEditBook } = useEditBook();
   const {
     imagePreview,
     handleUrlPreview,
@@ -38,6 +40,10 @@ const FormAddBook = () => {
     reset,
     clearErrors,
   } = useForm();
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   const formRef = useRef(null);
   const datalistRef = useRef(null);
@@ -70,17 +76,55 @@ const FormAddBook = () => {
       image_url: uploadedImageUrl,
     };
 
-    try {
-      await handleDonateBook(bookData);
-      reset();
-      if (datalistRef.current) datalistRef.current.reset();
-      setImagepreview(null);
-      setFileName("");
-      scrollToTop();
-    } catch (err) {
-      console.error(err);
+    if (isEditing) {
+      try {
+        await handleEditBook(book.id, bookData);
+        reset();
+        if (datalistRef.current) datalistRef.current.reset();
+        setImagepreview(null);
+        setFileName("");
+        scrollToTop();
+        closeModal();
+        onEditSuccess();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (!isEditing) {
+      try {
+        await handleDonateBook(bookData);
+        reset();
+        if (datalistRef.current) datalistRef.current.reset();
+        setImagepreview(null);
+        setFileName("");
+        scrollToTop();
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
+
+  useEffect(() => {
+    if (isEditing && book) {
+      // Preenche todos os campos
+      setValue("title", book.title);
+      setValue("author", book.author);
+      setValue("category", book.category);
+      setValue("image_url", book.image_url);
+
+      // Atualiza o Datalist (se usar ref)
+      if (datalistRef.current) {
+        datalistRef.current.setValue(book.category);
+      }
+
+      // Força pré-visualização da imagem
+      if (book.image_url) {
+        setImagepreview(book.image_url);
+        setUploadImageOption("url"); // Assume que a imagem vem por URL
+      }
+    }
+  }, [isEditing, book]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -114,7 +158,7 @@ const FormAddBook = () => {
 
   return (
     <form
-      className={styles["form-add-book"]}
+      className={styles["form-book"]}
       onSubmit={handleSubmit(onSubmit)}
       ref={formRef}
     >
@@ -142,12 +186,14 @@ const FormAddBook = () => {
       <div className={styles["box-input"]}>
         <CustomDatalist
           ref={datalistRef}
+          initialValue={book?.category || ""}
           options={categoriesBooks}
           placeholder="Categoria"
           name="category"
           value={register("category").value}
           onChange={(e) => {
             setValue("category", e.target.value);
+            setValue(isEditing ? book.category : "category", e.target.value);
             register("category", {
               required: true,
               message: "Campo obrigatório",
@@ -268,14 +314,39 @@ const FormAddBook = () => {
         </div>
       )}
 
-      <input
-        type="submit"
-        value={isSending || isUploading ? "Enviando..." : "Enviar"}
-        disabled={isSending || isUploading}
-        className={styles["submit-button"]}
-      />
+      {isEditing ? (
+        <div className={styles["edit-actions"]}>
+          <button
+            type="button"
+            className={styles["cancel-button"]}
+            onClick={closeModal}
+          >
+            Cancelar
+          </button>
+          <input
+            type="submit"
+            value={isSaving ? "Salvando.." : "Salvar"}
+            disabled={isSaving}
+            className={styles["edit-button"]}
+          />
+        </div>
+      ) : (
+        <input
+          type="submit"
+          value={isSending || isUploading ? "Doando.." : "Doar"}
+          disabled={isSending || isUploading}
+          className={styles["submit-button"]}
+        />
+      )}
     </form>
   );
 };
 
-export default FormAddBook;
+FormBook.propTypes = {
+  isEditing: PropTypes.bool,
+  book: PropTypes.object,
+  setModal: PropTypes.func,
+  onEditSuccess: PropTypes.func,
+};
+
+export default FormBook;

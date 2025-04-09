@@ -42,6 +42,7 @@ const DonationsPage = () => {
                 book={book}
                 key={book.id}
                 onDeleteSuccess={() => getDonateBooks(user?.id)}
+                onEditSuccess={() => getDonateBooks(user?.id)}
               />
             ))}
           </ContainerBooks>

@@ -7,7 +7,7 @@ import { useAuth } from "@hooks/useAuth";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
-const ModalLogin = () => {
+const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -112,4 +112,4 @@ const ModalLogin = () => {
   );
 };
 
-export default ModalLogin;
+export default Login;

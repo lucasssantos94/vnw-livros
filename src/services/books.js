@@ -29,7 +29,15 @@ const booksApiServices = {
       throw error;
     }
   },
-
+  editBook: async (id, data) => {
+    try {
+      const response = await api.put(`books/${id}`, data);
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao editar livro:", error);
+      throw error;
+    }
+  },
   deleteBook: async (id) => {
     try {
       const response = await api.delete(`books/${id}`);

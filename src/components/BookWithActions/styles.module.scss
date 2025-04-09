@@ -1,10 +1,20 @@
 @use 'sass:color';
 
-body:has(.modal-delete) {
+body:has(.modal-delete),
+body:has(.modal-edit) {
     overflow-y: hidden;
 }
 
 .s-books {
+    .box-book {
+        border: 3px solid global.$brand-color;
+        border-radius: 2rem;
+        padding-bottom: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: global.$light-color;
+
+    }
+
     .actions-buttons {
         display: flex;
         align-items: center;
@@ -55,51 +65,30 @@ body:has(.modal-delete) {
         }
     }
 
-    .modal-delete {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        @include global.flex($align: center, $justify: center);
+    .delete-content {
+        h3 {
+            margin-bottom: 1rem;
 
-        .modal-content {
-            max-width: 40rem;
-            background-color: global.$light-color;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-
-            @include global.media-query(sm) {
-                max-width: 25rem;
+            span {
+                color: global.$error-color;
             }
+        }
 
-            h3 {
-                margin-bottom: 1rem;
+        button {
+            margin-top: 1rem;
+            padding: 1rem 1.4rem;
+            border: none;
+            border-radius: 0.3rem;
+            color: global.$light-color;
+            cursor: pointer;
+        }
 
-                span {
-                    color: global.$error-color;
-                }
-            }
+        .cancel-button {
+            background-color: global.$error-color;
+        }
 
-            button {
-                margin-top: 1rem;
-                padding: 1rem 1.4rem;
-                border: none;
-                border-radius: 0.3rem;
-                color: global.$light-color;
-                cursor: pointer;
-            }
-
-            .cancel-button {
-                background-color: global.$error-color;
-            }
-
-            .confirm-button {
-                background-color: global.$success-color;
-            }
+        .confirm-button {
+            background-color: global.$success-color;
         }
     }
 

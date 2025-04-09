@@ -1,7 +1,7 @@
-import ModalLogin from "@components/ModalLogin";
+import Login from "@components/Login";
 
 const SignInPage = () => {
-  return <ModalLogin />;
+  return <Login />;
 };
 
 export default SignInPage;

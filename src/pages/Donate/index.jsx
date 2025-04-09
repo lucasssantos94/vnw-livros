@@ -1,7 +1,7 @@
 import Container from "@components/Container";
-import FormAddBook from "@components/FormAddBook";
+import FormBook from "@components/FormBook";
 import { useAuth } from "@hooks/useAuth";
-import ModalLogin from "@components/ModalLogin";
+import Login from "@components/Login";
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -30,7 +30,7 @@ const DonationPage = () => {
               Por favor, preencha o formulário com as informações do Livro
             </h2>
 
-            <FormAddBook />
+            <FormBook />
           </>
         ) : (
           <>
@@ -40,7 +40,7 @@ const DonationPage = () => {
               “Livros doados podem ser uma fonte de conforto e entretenimento em
               tempos difíceis.”
             </p>
-            <ModalLogin />
+            <Login />
           </>
         )}
       </Container>

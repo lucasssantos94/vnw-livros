@@ -23,14 +23,15 @@ const CustomDatalist = forwardRef(
     }, [value]);
 
     const handleInputChange = (e) => {
-      setInputValue(e.target.value);
-      onChange(e);
+      const newValue = e.target.value;
+      setInputValue(newValue);
+      onChange && onChange({ target: { name, value: newValue } });
       setShowDropdown(true);
     };
 
     const handleOptionClick = (option) => {
       setInputValue(option);
-      onChange({ target: { name, value: option } });
+      onChange && onChange({ target: { name, value: option } });
       setShowDropdown(false);
     };
 
@@ -38,7 +39,7 @@ const CustomDatalist = forwardRef(
       (e) => {
         if (containerRef.current && !containerRef.current.contains(e.target)) {
           setShowDropdown(false);
-          if (onBlur) onBlur(e);
+          onBlur && onBlur(e);
         }
       },
       [onBlur],
@@ -52,7 +53,18 @@ const CustomDatalist = forwardRef(
     }, [handleClickOutside]);
 
     useImperativeHandle(ref, () => ({
-      reset: () => setInputValue(""),
+      reset: () => {
+        setInputValue("");
+        onChange && onChange({ target: { name, value: "" } });
+      },
+      setValue: (value) => {
+        setInputValue(value);
+        onChange && onChange({ target: { name, value } });
+      },
+      getValue: () => inputValue,
+      focus: () => {
+        containerRef.current?.querySelector("input")?.focus();
+      },
     }));
 
     return (
@@ -65,6 +77,7 @@ const CustomDatalist = forwardRef(
           onChange={handleInputChange}
           onFocus={() => setShowDropdown(true)}
           autoComplete="off"
+          aria-invalid={!!error}
         />
         {showDropdown && (
           <ul className={styles["options-list"]}>
@@ -83,7 +96,9 @@ const CustomDatalist = forwardRef(
               ))}
           </ul>
         )}
-        {error && <span className="error-message">{error.message}</span>}
+        {error && (
+          <span className={styles["error-message"]}>{error.message}</span>
+        )}
       </div>
     );
   },

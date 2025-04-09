@@ -1,6 +1,6 @@
 @use "sass:color";
 
-.form-add-book {
+.form-book {
     @include global.flex($align: center, $direction: column, $justify: space-between);
     width: 100%;
     max-width: 44.2rem;
@@ -8,6 +8,7 @@
     border: 0.3rem solid global.$brand-color;
     border-radius: 2rem;
     padding: 2rem;
+    background-color: global.$light-color;
 
     @include global.media-query(1700px) {
         &:has(.image-preview) {
@@ -16,17 +17,27 @@
     }
 
     @include global.media-query(sm) {
+        padding: 1rem;
+
         &:has(.image-preview) {
-            min-height: 85rem;
+            min-height: 90rem;
+        }
+    }
+
+    @include global.media-query(320px) {
+        &:has(.image-preview) {
+            min-height: 100rem;
         }
     }
 
     .form-header {
         @include global.flex($align: center, $gap: 2rem);
 
-        @include global.media-query(320px) {
+
+        @include global.media-query(sm) {
             @include global.flex($direction: column, $align: center, $gap: 1rem);
         }
+
 
         h3 {
             color: global.$brand-color;
@@ -85,6 +96,10 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+
+            @include global.media-query(320px) {
+                flex-direction: column;
+            }
 
             &:hover:not(:disabled) {
                 background: rgba(global.$brand-color, 0.7);
@@ -183,7 +198,7 @@
 
         @include global.media-query(sm) {
             width: 20rem;
-
+            max-height: 30rem;
         }
 
     }
@@ -206,6 +221,34 @@
         &:disabled {
             background: color.adjust(global.$brand-color, $lightness: 30%, $space: hsl);
             cursor: not-allowed;
+        }
+    }
+
+    .edit-actions {
+        @include global.flex($align: center, $gap: 2rem);
+
+        .cancel-button {
+            border-radius: 1rem;
+            background: global.$error-color;
+            width: 12rem;
+            height: 5.3rem;
+            border: none;
+            color: global.$light-color;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        @include global.media-query(sm) {
+            flex-direction: column-reverse;
+            gap: 1rem;
+
+            .edit-button {
+                max-width: 100%;
+            }
+
+            .cancel-button {
+                width: 100%;
+            }
         }
     }
 }
