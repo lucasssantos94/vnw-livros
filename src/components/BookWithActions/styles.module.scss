@@ -65,12 +65,16 @@ body:has(.modal-delete) {
         @include global.flex($align: center, $justify: center);
 
         .modal-content {
-            max-width: 50rem;
+            max-width: 40rem;
             background-color: global.$light-color;
             padding: 2rem;
             border-radius: 0.5rem;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             text-align: center;
+
+            @include global.media-query(sm) {
+                max-width: 25rem;
+            }
 
             h3 {
                 margin-bottom: 1rem;
