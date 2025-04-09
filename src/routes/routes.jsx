@@ -10,6 +10,7 @@ import SignUpPage from "@pages/SignUp";
 import SignInPage from "@pages/SignIn";
 import DashboardPage from "@pages/Dashboard/admin";
 import PrivateRoute from "./PrivateRoute";
+import DonationsPage from "../pages/Donations";
 
 export const router = createBrowserRouter(
   [
@@ -28,6 +29,14 @@ export const router = createBrowserRouter(
           element: (
             <PrivateRoute>
               <DashboardPage />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/doacoes",
+          element: (
+            <PrivateRoute>
+              <DonationsPage />
             </PrivateRoute>
           ),
         },

@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useBooks } from "@hooks/useGetBooks";
 import Container from "@components/Container";
+import ContainerBooks from "@components/ContainerBooks";
 import Book from "@components/Book";
-import BookLoader from "@components/BookLoading";
+import BookLoader from "@components/BookLoader";
 import style from "./style.module.scss";
 
 const BooksPage = () => {
@@ -32,11 +33,11 @@ const BooksPage = () => {
             <h2>Nenhum livro disponível</h2>
           </div>
         ) : (
-          <div className={style["box-books"]}>
+          <ContainerBooks>
             {books.map((book) => (
               <Book key={book.id} book={book} />
             ))}
-          </div>
+          </ContainerBooks>
         )}
       </Container>
     </section>

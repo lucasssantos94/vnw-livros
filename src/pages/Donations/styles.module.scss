@@ -1,0 +1,38 @@
+@use 'sass:color';
+
+.s-donations {
+    padding: 2rem 0;
+
+    h2 {
+        text-align: center;
+    }
+
+    .empty-state {
+        margin-top: 4rem;
+        @include global.flex($direction: column, $align: center, $gap: 2rem);
+
+        .phrase {
+            color: global.$gray-color;
+            text-align: center;
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 35rem;
+        }
+
+        button {
+            padding: 1.4rem 1.6rem;
+            font-size: 1.4rem;
+            font-weight: bold;
+            background-color: global.$brand-color;
+            color: global.$light-color;
+            border: none;
+            border-radius: 1.6rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: color.adjust(global.$brand-color, $lightness: 10%, $space: hsl);
+                transform: scale(1.05);
+            }
+        }
+    }
+}

@@ -23,7 +23,7 @@ const ModalLogin = () => {
   const onSubmit = async (data) => {
     try {
       const response = await authApiServices.login(data);
-      const token = response.access_token;
+      const token = response?.access_token;
       login(token);
       navigate(location.state?.from || "/doar");
     } catch (error) {

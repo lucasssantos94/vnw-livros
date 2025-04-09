@@ -29,6 +29,16 @@ const booksApiServices = {
       throw error;
     }
   },
+
+  deleteBook: async (id) => {
+    try {
+      const response = await api.delete(`books/${id}`);
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao deletar livro:", error);
+      throw error;
+    }
+  },
 };
 
 export default booksApiServices;

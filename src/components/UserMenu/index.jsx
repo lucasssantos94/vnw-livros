@@ -64,19 +64,31 @@ const UserMenu = ({ closeMenu }) => {
             className={`${styles["dropdown-menu"]} ${isOpen ? styles.open : ""}`}
           >
             <Link
-              to="/dashboard"
-              className={styles["dropdown-item"]}
-              onClick={handleToggleDropdown}
-            >
-              Dashboard
-            </Link>
-            <Link
               to="/profile"
               className={styles["dropdown-item"]}
               onClick={handleToggleDropdown}
             >
               Meu Perfil
             </Link>
+
+            {user.is_admin ? (
+              <Link
+                to="/dashboard"
+                className={styles["dropdown-item"]}
+                onClick={handleToggleDropdown}
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <Link
+                to="/doacoes"
+                className={styles["dropdown-item"]}
+                onClick={handleToggleDropdown}
+              >
+                Minhas Doações
+              </Link>
+            )}
+
             <button
               onClick={() => {
                 handleLogout();

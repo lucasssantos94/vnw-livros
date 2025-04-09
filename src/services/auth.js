@@ -1,4 +1,5 @@
 import api from "./api";
+import { toast } from "react-toastify";
 
 export const authApiServices = {
   register: async ({ email, password, nickname }) => {
@@ -10,11 +11,15 @@ export const authApiServices = {
     return response.data;
   },
   login: async ({ email, password }) => {
-    const response = await api.post(`/auth/login`, {
-      email,
-      password,
-    });
-    return response.data;
+    try {
+      const response = await api.post(`/auth/login`, {
+        email,
+        password,
+      });
+      return response.data;
+    } catch (error) {
+      toast.error(error.response.data.error);
+    }
   },
 
   logout: async () => {

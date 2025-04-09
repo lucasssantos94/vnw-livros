@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSearchBook } from "@hooks/useSearchBook";
 
 import Book from "@components/Book";
-import BookLoader from "@components/BookLoading";
+import BookLoader from "@components/BookLoader";
 import Container from "@components/Container";
 import BookNotFound from "@assets/images/404/book-not-found.webp";
 
