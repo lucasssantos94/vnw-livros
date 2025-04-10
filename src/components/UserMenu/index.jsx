@@ -21,10 +21,6 @@ const UserMenu = ({ closeMenu }) => {
     }
   };
 
-  // const refreshPage = () => {
-  //   window.location.reload();
-  // };
-
   const handleLogout = async () => {
     try {
       await logout();
@@ -46,10 +42,6 @@ const UserMenu = ({ closeMenu }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  // useEffect(() => {
-  //   refreshPage();
-  // }, [user]);
 
   return (
     <div className={styles["profile-menu"]} ref={dropdownRef}>

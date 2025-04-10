@@ -13,7 +13,7 @@ export const useDonateBook = () => {
       await bookApiServices.donate(bookData);
 
       toast.success("Livro cadastrado, Obrigado pela doação", {
-        autoClose: 3000,
+        autoClose: false,
       });
 
       if (onSucess) onSucess();

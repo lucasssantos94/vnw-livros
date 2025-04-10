@@ -117,7 +117,6 @@ const Profile = () => {
             <div className={styles.buttonsContainer}>
               <button
                 type="button"
-                onClick={() => setIsModalOpen(true)}
                 className={styles["change-password-button"]}
                 disabled={true}
               >
@@ -132,11 +131,6 @@ const Profile = () => {
               </button>
             </div>
           </form>
-
-          {/* <AlterarSenhaModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      /> */}
         </div>
       </section>
     </Container>

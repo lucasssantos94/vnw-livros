@@ -17,7 +17,7 @@ const App = () => {
         </main>
         <Footer />
       </RootLayout>
-      <ToastContainer className="toastify" />
+      <ToastContainer />
     </AuthProvider>
   );
 };

@@ -19,6 +19,15 @@ export const userApiServices = {
       throw error;
     }
   },
+  changePassword: async (data) => {
+    try {
+      const response = await api.put(`users/password`, data);
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao atualizar senha:", error);
+      throw error;
+    }
+  },
 };
 
 export default userApiServices;
