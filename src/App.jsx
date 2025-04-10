@@ -17,7 +17,14 @@ const App = () => {
         </main>
         <Footer />
       </RootLayout>
-      <ToastContainer />
+      <ToastContainer
+        toastStyle={{
+          position: "fixed",
+          top: "16%",
+          right: "2rem",
+          fontSize: "1.2rem",
+        }}
+      />
     </AuthProvider>
   );
 };
