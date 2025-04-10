@@ -1,0 +1,127 @@
+@use 'sass:color';
+
+.form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+
+    .form-title {
+        text-align: center;
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 2.2rem;
+    }
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .label {
+        font-weight: 500;
+        color: #555;
+        font-size: 1.4rem;
+    }
+
+    .password-input-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .toggle-password-button {
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: global.$gray-color;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                color: global.$brand-color;
+                transform: scale(1.1);
+            }
+
+            svg {
+                width: 18px;
+                height: 18px;
+            }
+        }
+    }
+
+
+
+    .input {
+        width: 100%;
+        padding-right: 40px;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+
+        &:focus {
+            outline: none;
+            border-color: global.$brand-color;
+            box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+        }
+    }
+
+    .error {
+        border-color: global.$error-color;
+
+        &:focus {
+            box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+        }
+    }
+
+    .error-message {
+        color: #e74c3c;
+        font-size: 1rem;
+        margin-top: 0.25rem;
+    }
+
+    button,
+    button[type="button"] {
+        display: block;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.4rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        color: white;
+        padding: 0.85rem;
+    }
+
+    .submit-button {
+        background-color: global.$brand-color;
+
+
+        &:hover {
+            background-color: #3a7bc8;
+        }
+
+        &:active {
+            background-color: #2c6bb7;
+        }
+    }
+
+    .cancel-button {
+        background-color: global.$error-color;
+    }
+}

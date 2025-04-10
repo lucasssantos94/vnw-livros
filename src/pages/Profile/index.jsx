@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "@hooks/useAuth";
 import { useImagePreview } from "@hooks/useImagePreview";
 import { useUpdateProfile } from "@hooks/useUpdateProfile";
 
 import Container from "@components/Container";
+import Modal from "@components/Modal";
+import FormChancePassWord from "@components/FormChancePassWord";
 import avatar from "@assets/images/icons/avatar.png";
-
 import styles from "./styles.module.scss";
-// import AlterarSenhaModal from "./AlterarSenhaModal";
 
 const Profile = () => {
-  // const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { imagePreview, handleUrlPreview } = useImagePreview();
   const { isUpdating, handleUpdateProfile } = useUpdateProfile();
 
@@ -118,7 +118,7 @@ const Profile = () => {
               <button
                 type="button"
                 className={styles["change-password-button"]}
-                disabled={true}
+                onClick={() => setIsModalOpen(true)}
               >
                 Alterar Senha
               </button>
@@ -132,6 +132,12 @@ const Profile = () => {
             </div>
           </form>
         </div>
+
+        {isModalOpen && (
+          <Modal title="Alterar Senha" isOpen={isModalOpen}>
+            <FormChancePassWord onClose={() => setIsModalOpen(false)} />
+          </Modal>
+        )}
       </section>
     </Container>
   );
