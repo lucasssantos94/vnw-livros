@@ -21,6 +21,10 @@ const UserMenu = ({ closeMenu }) => {
     }
   };
 
+  // const refreshPage = () => {
+  //   window.location.reload();
+  // };
+
   const handleLogout = async () => {
     try {
       await logout();
@@ -43,6 +47,10 @@ const UserMenu = ({ closeMenu }) => {
     };
   }, []);
 
+  // useEffect(() => {
+  //   refreshPage();
+  // }, [user]);
+
   return (
     <div className={styles["profile-menu"]} ref={dropdownRef}>
       {user ? (
@@ -64,30 +72,20 @@ const UserMenu = ({ closeMenu }) => {
             className={`${styles["dropdown-menu"]} ${isOpen ? styles.open : ""}`}
           >
             <Link
-              to="/profile"
+              to="/perfil"
               className={styles["dropdown-item"]}
               onClick={handleToggleDropdown}
             >
               Meu Perfil
             </Link>
 
-            {user.is_admin ? (
-              <Link
-                to="/dashboard"
-                className={styles["dropdown-item"]}
-                onClick={handleToggleDropdown}
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <Link
-                to="/doacoes"
-                className={styles["dropdown-item"]}
-                onClick={handleToggleDropdown}
-              >
-                Minhas Doações
-              </Link>
-            )}
+            <Link
+              to="/doacoes"
+              className={styles["dropdown-item"]}
+              onClick={handleToggleDropdown}
+            >
+              Minhas Doações
+            </Link>
 
             <button
               onClick={() => {

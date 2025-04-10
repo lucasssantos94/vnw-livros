@@ -10,6 +10,15 @@ export const userApiServices = {
       throw error;
     }
   },
+  updateProfile: async (data) => {
+    try {
+      const response = await api.put(`users/update`, data);
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao atualizar perfil:", error);
+      throw error;
+    }
+  },
 };
 
 export default userApiServices;

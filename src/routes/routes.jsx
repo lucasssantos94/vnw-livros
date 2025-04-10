@@ -8,9 +8,9 @@ import DonatePage from "@pages/Donate";
 import NotFoundPage from "@pages/NotFound";
 import SignUpPage from "@pages/SignUp";
 import SignInPage from "@pages/SignIn";
-import DashboardPage from "@pages/Dashboard/admin";
 import PrivateRoute from "./PrivateRoute";
-import DonationsPage from "../pages/Donations";
+import DonationsPage from "@pages/Donations";
+import Profile from "@pages/Profile";
 
 export const router = createBrowserRouter(
   [
@@ -24,19 +24,20 @@ export const router = createBrowserRouter(
         { path: "/doar", element: <DonatePage /> },
         { path: "/cadastro", element: <SignUpPage /> },
         { path: "/login", element: <SignInPage /> },
-        {
-          path: "/dashboard",
-          element: (
-            <PrivateRoute>
-              <DashboardPage />
-            </PrivateRoute>
-          ),
-        },
+
         {
           path: "/doacoes",
           element: (
             <PrivateRoute>
               <DonationsPage />
+            </PrivateRoute>
+          ),
+        },
+        {
+          path: "/perfil",
+          element: (
+            <PrivateRoute>
+              <Profile />
             </PrivateRoute>
           ),
         },
