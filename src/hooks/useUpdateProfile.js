@@ -16,8 +16,7 @@ export const useUpdateProfile = () => {
       });
     } catch (error) {
       setError(error);
-      console.log(error);
-      toast.error("Erro ao atualizar perfil, tente novamente", {
+      toast.error(error.response?.data?.error, {
         autoClose: false,
       });
     } finally {

@@ -11,7 +11,7 @@ export const useEditBook = () => {
     setError(null);
     try {
       await bookApiServices.editBook(id, data);
-      toast.success("Livro editado com sucesso", {
+      toast.success("Livro editado", {
         autoClose: 3000,
       });
     } catch (error) {
