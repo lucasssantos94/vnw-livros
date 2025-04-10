@@ -259,7 +259,7 @@ const FormBook = ({ isEditing, book, setModal, onEditSuccess }) => {
                 required: { value: true, message: "Campo obrigatório" },
                 pattern: {
                   value:
-                    /^https:\/\/(www\.)?[\w-@:%._+~#=]{1,256}\.[a-z\d()]{1,6}\b([\w-@:%+._~#?&//=]*)$/i,
+                    /^https:\/\/(?:www\.)?[\w.-]+\.[a-z]{2,}(?:[/?#][^\s]*)?$/i,
                   message: "Insira um link válido (deve conter uma imagem)",
                 },
               })}
