@@ -58,7 +58,7 @@ const Profile = () => {
     <Container>
       <section className={styles["s-profile"]}>
         <h2 className={styles["title-section"]}>Meu Perfil</h2>
-        <div className={styles.container}>
+        <div className={styles["profile-container"]}>
           <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
             <div className={styles["preview-avatar"]}>
               <img
@@ -67,8 +67,8 @@ const Profile = () => {
                 className={styles.avatar}
               />
             </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="avatar_url" className={styles.label}>
+            <div className={styles["form-group"]}>
+              <label htmlFor="avatar_url" className={styles["label"]}>
                 Avatar URL
               </label>
               <input
@@ -81,18 +81,18 @@ const Profile = () => {
                   },
                 })}
                 value={imagePreview || user.avatar_url}
-                className={styles.input}
+                className={styles["input"]}
                 onChange={(e) => handleUrlPreview(e.target.value)}
               />
               {errors.avatar_url && (
-                <span className={styles.errorMessage}>
+                <span className={styles["error-message"]}>
                   {errors.avatar_url.message}
                 </span>
               )}
             </div>
 
-            <div className={styles.formGroup}>
-              <label htmlFor="nickname" className={styles.label}>
+            <div className={styles["form-group"]}>
+              <label htmlFor="nickname" className={styles["label"]}>
                 Nickname
               </label>
               <input
@@ -105,16 +105,16 @@ const Profile = () => {
                     message: "Apelido deve ter pelo menos 3 caracteres",
                   },
                 })}
-                className={styles.input}
+                className={styles["input"]}
               />
               {errors.nickname && (
-                <span className={styles.errorMessage}>
+                <span className={styles["error-message"]}>
                   {errors.nickname.message}
                 </span>
               )}
             </div>
 
-            <div className={styles.buttonsContainer}>
+            <div className={styles["buttons-container"]}>
               <button
                 type="button"
                 className={styles["change-password-button"]}

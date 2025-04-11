@@ -153,7 +153,7 @@ const FormChancePassWord = ({ onClose }) => {
           className={styles["cancel-button"]}
           onClick={onClose}
         >
-          Fechar
+          Cancelar
         </button>
       </form>
     </div>

@@ -11,6 +11,8 @@ import SignInPage from "@pages/SignIn";
 import PrivateRoute from "./PrivateRoute";
 import DonationsPage from "@pages/Donations";
 import Profile from "@pages/Profile";
+import RecoveryPassword from "../pages/RecoveryPassWord";
+import ResetPassword from "../pages/ResetPassword";
 
 export const router = createBrowserRouter(
   [
@@ -24,6 +26,8 @@ export const router = createBrowserRouter(
         { path: "/doar", element: <DonatePage /> },
         { path: "/cadastro", element: <SignUpPage /> },
         { path: "/login", element: <SignInPage /> },
+        { path: "/recuperar-senha", element: <RecoveryPassword /> },
+        { path: "/redefinir-senha", element: <ResetPassword /> },
 
         {
           path: "/doacoes",

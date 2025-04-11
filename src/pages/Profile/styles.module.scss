@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .s-profile {
     padding: 2rem 0;
 
@@ -6,7 +8,7 @@
     }
 }
 
-.container {
+.profile-container {
     max-width: 600px;
     margin: 2rem auto;
     padding: 2rem;
@@ -44,7 +46,7 @@
     }
 }
 
-.formGroup {
+.form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -75,12 +77,12 @@
     cursor: not-allowed;
 }
 
-.errorMessage {
-    color: #ff4444;
+.error-message {
+    color: global.$error-color;
     font-size: 0.8rem;
 }
 
-.buttonsContainer {
+.buttons-container {
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
@@ -96,6 +98,10 @@
     cursor: pointer;
     transition: background-color 0.3s;
 
+    &:hover {
+        background-color: color.adjust(global.$brand-color, $lightness: 10%, $space: hsl);
+    }
+
     &:disabled {
         background-color: #cccccc;
         color: global.$dark-color;
@@ -105,8 +111,8 @@
 
 .change-password-button {
     padding: 0.8rem 1.5rem;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: global.$success-color;
+    color: global.$light-color;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1.2rem;
@@ -114,7 +120,7 @@
     transition: all 0.3s;
 
     &:hover {
-        background-color: #e0e0e0;
+        background-color: color.adjust(global.$success-color, $lightness: 10%, $space: hsl);
     }
 
     &:disabled {
@@ -132,5 +138,5 @@
 }
 
 .error {
-    color: #ff4444;
+    color: global.$error-color;
 }

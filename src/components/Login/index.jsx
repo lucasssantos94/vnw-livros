@@ -102,6 +102,10 @@ const Login = () => {
             {isSubmitting ? "Entrando..." : "Entrar"}
           </button>
 
+          <div className={styles["forgot-password"]}>
+            <Link to="/recuperar-senha">Esqueceu a senha? clique aqui</Link>
+          </div>
+
           <div className={styles["register-link"]}>
             <span>Não tem uma conta? </span>
             <Link to="/cadastro">Cadastre-se</Link>
