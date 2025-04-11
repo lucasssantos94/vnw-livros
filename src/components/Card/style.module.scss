@@ -7,6 +7,14 @@
     box-shadow: global.$box-shadow;
     @include global.flex($justify: center, $align: center, $direction: column, $gap: 3rem);
 
+    @include global.media-query(xxl) {
+        padding: 1rem;
+    }
+
+    @include global.media-query(1130px) {
+        padding: 0.5rem;
+    }
+
     img {
         max-width: 10rem;
         height: 10rem;
