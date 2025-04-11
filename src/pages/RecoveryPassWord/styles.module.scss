@@ -1,7 +1,7 @@
 @use "sass:color";
 
 .s-recovery {
-    max-width: 400px;
+    max-width: 500px;
     margin: 5rem auto;
     padding: 2rem;
     background: global.$light-color;
@@ -84,23 +84,21 @@
                 cursor: not-allowed;
             }
         }
+
+        .input-error {
+            border: 1px solid global.$error-color;
+        }
+
+        .error-text {
+            color: global.$error-color;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .success-text {
+            color: global.$dark-color;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
     }
-}
-
-
-
-.input-error {
-    border: 1px solid global.$error-color;
-}
-
-.error-text {
-    color: global.$error-color;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
-}
-
-.success-text {
-    color: global.$success-color;
-    font-size: 0.95rem;
-    margin-top: 1rem;
 }

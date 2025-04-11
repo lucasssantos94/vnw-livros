@@ -9,9 +9,11 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (token) {
+    if (token && token.includes(".")) {
       const userData = parseJwt(token);
       setUser(userData);
+    } else {
+      setUser(null);
     }
   }, [token]);
 

@@ -26,4 +26,29 @@ export const authApiServices = {
     const response = await api.post(`auth/logout`);
     return response.data;
   },
+
+  forgotPassword: async ({ email }) => {
+    try {
+      const response = await api.post(`/auth/forgot-password`, {
+        email,
+      });
+      return response.data;
+    } catch (error) {
+      toast.error(error.response.data.error);
+    }
+  },
+
+  resetPassword: async (token, data) => {
+    try {
+      const encodedToken = encodeURIComponent(token);
+      const response = await api.post(`/auth/reset-password/${encodedToken}`, {
+        new_password: data.new_password,
+        confirm_password: data.confirm_password,
+      });
+      return response.data;
+    } catch (error) {
+      toast.error(error.response.data.error || "Erro ao resetar senha");
+      throw error;
+    }
+  },
 };

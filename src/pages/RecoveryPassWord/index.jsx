@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { useForgotPassword } from "@hooks/useForgotPassword";
+
 import styles from "./styles.module.scss";
 
 const RecoveryPassword = () => {
+  const { handleForgotPassword } = useForgotPassword();
   const {
     register,
     handleSubmit,
@@ -15,25 +17,12 @@ const RecoveryPassword = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch(
-        "http://localhost:5000/auth/forgot-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email: data.email }),
-        },
-      );
-
-      if (!response.ok)
-        throw new Error("Erro ao enviar e-mail de recuperação.");
-
+      await handleForgotPassword({ email: data.email });
       setEmailSent(true);
-      toast.success("E-mail de recuperação enviado com sucesso!");
+      console.log(data);
       reset();
     } catch (error) {
-      toast.error(error.message);
+      console.log(error);
     }
   };
 

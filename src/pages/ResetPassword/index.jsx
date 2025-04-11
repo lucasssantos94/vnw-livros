@@ -1,8 +1,13 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import { useResetPassword } from "@hooks/useResetPassword";
+
 import styles from "./styles.module.scss";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
+  const { handleResetPassword } = useResetPassword();
   const {
     register,
     handleSubmit,
@@ -15,43 +20,26 @@ const ResetPassword = () => {
   const token = searchParams.get("token");
 
   const onSubmit = async (data) => {
-    if (!token) {
-      setError("root", {
-        message: "Token inválido ou ausente.",
-      });
-      return;
-    }
-
     try {
-      const response = await fetch(
-        "http://localhost:5000/auth/reset-password",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token, password: data.password }),
-        },
-      );
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        setError("root", {
-          message: result.message || "Erro ao redefinir senha.",
-        });
-        return;
-      }
-
-      alert("Senha redefinida com sucesso!");
-      // Redirecionar ou limpar o formulário
-    } catch (err) {
-      setError("root", {
-        message: "Erro de conexão com o servidor.",
+      await handleResetPassword(token, {
+        new_password: data.password,
+        confirm_password: data.confirmPassword,
       });
-      console.log(err);
+
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
+    } catch (error) {
+      setError("password", { message: error.response.data.error });
+      console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
 
   return (
     <section className={styles["s-reset-password"]}>
